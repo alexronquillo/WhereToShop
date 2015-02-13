@@ -1,0 +1,5 @@
+/Users/arr/dev/WhereToShop/build/intermediates/classes/debug
+/Users/arr/dev/WhereToShop/build/intermediates/pre-dexed/debug/support-annotations-21.0.0-fc8f239e0707e1e7e6d9a03b519494a89ed9e3f5.jar
+/Users/arr/dev/WhereToShop/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-719f2a4bd015601d866b7d1552b1788f13e0d375.jar
+/Users/arr/dev/WhereToShop/build/intermediates/pre-dexed/debug/classes-988a295a95bffb581e61c257831e5f3bab718105.jar
+/Users/arr/dev/WhereToShop/build/intermediates/pre-dexed/debug/classes-99f1ecff0334aa29fd4b66080c7fb44b909ab581.jar
