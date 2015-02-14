@@ -12,11 +12,6 @@
     <bool name="abc_config_actionMenuItemAllCaps">true</bool>
     <bool name="abc_config_allowActionMenuItemTextWithIcon">false</bool>
     <bool name="abc_config_showMenuShortcutsWhenKeyboardPresent">false</bool>
-    <!-- From: file:/Users/arr/dev/WhereToShop/src/main/res/values/themes.xml -->
-    <eat-comment/>
-    <color name="WhereToShopActionBarColor">#99CC00</color>
-    <!-- From: file:/Users/arr/dev/WhereToShop/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
-    <eat-comment/>
     <color name="abc_input_method_navigation_guard">@android:color/black</color>
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
@@ -1151,16 +1146,6 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>
     <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
-    <!-- From: file:/Users/arr/dev/WhereToShop/src/main/res/values/themes.xml -->
-    <eat-comment/>
-    <style name="WTSActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-		<item name="android:background">@color/WhereToShopActionBarColor</item>
-	</style>
-    <style name="WhereToShopActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-		<item name="android:actionBarStyle">@style/WTSActionBarStyle</item>
-	</style>
-    <!-- From: file:/Users/arr/dev/WhereToShop/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
-    <eat-comment/>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar"/>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Base.Widget.AppCompat.ActionBar.Solid"/>
     <style name="Widget.AppCompat.ActionBar.TabBar" parent="Base.Widget.AppCompat.ActionBar.TabBar"/>
