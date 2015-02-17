@@ -351,6 +351,7 @@ int id beginning 0x7f080013
 int id bottom 0x7f08001e
 int id checkbox 0x7f08002b
 int id collapseActionView 0x7f080017
+int id contributor_button 0x7f080043
 int id decor_content_parent 0x7f080031
 int id default_activity_button 0x7f080026
 int id dialog 0x7f08001b
@@ -360,6 +361,7 @@ int id edit_query 0x7f080035
 int id end 0x7f080014
 int id expand_activities_button 0x7f080024
 int id expanded_menu 0x7f08002a
+int id grocery_list_button 0x7f080041
 int id home 0x7f080004
 int id homeAsUp 0x7f08000d
 int id icon 0x7f080028
@@ -397,6 +399,7 @@ int id up 0x7f080008
 int id useLogo 0x7f080012
 int id withText 0x7f08001a
 int id wrap_content 0x7f08001d
+int id wts_button 0x7f080042
 int integer abc_max_action_buttons 0x7f090000
 int layout abc_action_bar_title_item 0x7f030000
 int layout abc_action_bar_up_container 0x7f030001
@@ -421,7 +424,7 @@ int layout abc_screen_toolbar 0x7f030013
 int layout abc_search_dropdown_item_icons_2line 0x7f030014
 int layout abc_search_view 0x7f030015
 int layout abc_simple_dropdown_hint 0x7f030016
-int layout main 0x7f030017
+int layout home_activity 0x7f030017
 int layout support_simple_spinner_dropdown_item 0x7f030018
 int string abc_action_bar_home_description 0x7f0a0000
 int string abc_action_bar_home_description_format 0x7f0a0001
@@ -439,6 +442,9 @@ int string abc_searchview_description_voice 0x7f0a000c
 int string abc_shareactionprovider_share_with 0x7f0a000d
 int string abc_shareactionprovider_share_with_application 0x7f0a000e
 int string app_name 0x7f0a000f
+int string contributor_button_text 0x7f0a0010
+int string grocery_list_button_text 0x7f0a0011
+int string wts_button_text 0x7f0a0012
 int style Base_TextAppearance_AppCompat 0x7f0b0000
 int style Base_TextAppearance_AppCompat_Body1 0x7f0b0001
 int style Base_TextAppearance_AppCompat_Body2 0x7f0b0002

@@ -1322,6 +1322,7 @@ containing a value of this type.
         public static final int bottom=0x7f08001e;
         public static final int checkbox=0x7f08002b;
         public static final int collapseActionView=0x7f080017;
+        public static final int contributor_button=0x7f080043;
         public static final int decor_content_parent=0x7f080031;
         public static final int default_activity_button=0x7f080026;
         public static final int dialog=0x7f08001b;
@@ -1331,6 +1332,7 @@ containing a value of this type.
         public static final int end=0x7f080014;
         public static final int expand_activities_button=0x7f080024;
         public static final int expanded_menu=0x7f08002a;
+        public static final int grocery_list_button=0x7f080041;
         public static final int home=0x7f080004;
         public static final int homeAsUp=0x7f08000d;
         public static final int icon=0x7f080028;
@@ -1368,6 +1370,7 @@ containing a value of this type.
         public static final int useLogo=0x7f080012;
         public static final int withText=0x7f08001a;
         public static final int wrap_content=0x7f08001d;
+        public static final int wts_button=0x7f080042;
     }
     public static final class integer {
         public static final int abc_max_action_buttons=0x7f090000;
@@ -1396,7 +1399,7 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f030014;
         public static final int abc_search_view=0x7f030015;
         public static final int abc_simple_dropdown_hint=0x7f030016;
-        public static final int main=0x7f030017;
+        public static final int home_activity=0x7f030017;
         public static final int support_simple_spinner_dropdown_item=0x7f030018;
     }
     public static final class string {
@@ -1416,6 +1419,9 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with=0x7f0a000d;
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000e;
         public static final int app_name=0x7f0a000f;
+        public static final int contributor_button_text=0x7f0a0010;
+        public static final int grocery_list_button_text=0x7f0a0011;
+        public static final int wts_button_text=0x7f0a0012;
     }
     public static final class style {
         public static final int Base_TextAppearance_AppCompat=0x7f0b0000;

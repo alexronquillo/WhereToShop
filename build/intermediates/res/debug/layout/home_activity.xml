@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<Button
+	android:id="@+id/grocery_list_button"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="@string/grocery_list_button_text"
+	/>
+
+<Button
+	android:id="@+id/wts_button"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="@string/wts_button_text"
+	/>
+
+<Button
+	android:id="@+id/contributor_button"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="@string/contributor_button_text"
+	/>
+
+</LinearLayout>
+<!-- From: file:/Users/arr/dev/WhereToShop/src/main/res/layout/home_activity.xml -->

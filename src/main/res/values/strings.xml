@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WhereToShop</string>
+	<string name="grocery_list_button_text">Grocery List</string>
+	<string name="wts_button_text">Where to Shop</string>
+	<string name="contributor_button_text">Contribute!</string>
 </resources>
