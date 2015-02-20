@@ -4,4 +4,6 @@
 	<string name="grocery_list_button_text">Grocery List</string>
 	<string name="wts_button_text">Where to Shop</string>
 	<string name="contributor_button_text">Contribute!</string>
+	<string name="action_bar_add_text">Add</string>
+	<string name="action_bar_remove_text">Remove</string>
 </resources>

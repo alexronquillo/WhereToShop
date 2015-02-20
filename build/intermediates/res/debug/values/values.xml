@@ -154,6 +154,8 @@
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <!-- From: file:/Users/arr/dev/WhereToShop/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="action_bar_add_text">Add</string>
+    <string name="action_bar_remove_text">Remove</string>
     <string name="app_name">WhereToShop</string>
     <string name="contributor_button_text">Contribute!</string>
     <string name="grocery_list_button_text">Grocery List</string>

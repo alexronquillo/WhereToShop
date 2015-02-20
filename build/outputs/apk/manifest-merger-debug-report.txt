@@ -47,3 +47,7 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:16:17
 	android:name
 		ADDED from AndroidManifest.xml:16:27
+activity#com.wheretoshop.controller.GroceryListActivity
+ADDED from AndroidManifest.xml:19:3
+	android:name
+		ADDED from AndroidManifest.xml:19:13
