@@ -6,4 +6,6 @@
 	<string name="contributor_button_text">Contribute!</string>
 	<string name="action_bar_add_text">Add</string>
 	<string name="action_bar_remove_text">Remove</string>
+	<string name="switch_search_text">Search</string>
+	<string name="switch_manual_text">Manual Entry</string>
 </resources>

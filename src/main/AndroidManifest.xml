@@ -17,5 +17,6 @@
             </intent-filter>
         </activity>
 		<activity android:name=".controller.GroceryListActivity" />
+		<activity android:name=".controller.GroceryListModifyActivity" />
     </application>
 </manifest>

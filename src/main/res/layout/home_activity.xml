@@ -9,6 +9,7 @@
 	android:id="@+id/grocery_list_button"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
+	android:layout_gravity="center"
 	android:text="@string/grocery_list_button_text"
 	/>
 
@@ -16,6 +17,7 @@
 	android:id="@+id/wts_button"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
+	android:layout_gravity="center"
 	android:text="@string/wts_button_text"
 	/>
 
@@ -23,6 +25,7 @@
 	android:id="@+id/contributor_button"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
+	android:layout_gravity="center"
 	android:text="@string/contributor_button_text"
 	/>
 

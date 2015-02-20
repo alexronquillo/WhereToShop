@@ -159,6 +159,8 @@
     <string name="app_name">WhereToShop</string>
     <string name="contributor_button_text">Contribute!</string>
     <string name="grocery_list_button_text">Grocery List</string>
+    <string name="switch_manual_text">Manual Entry</string>
+    <string name="switch_search_text">Search</string>
     <string name="wts_button_text">Where to Shop</string>
     <!-- From: file:/Users/arr/dev/WhereToShop/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
     <eat-comment/>

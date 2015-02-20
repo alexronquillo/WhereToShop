@@ -4,7 +4,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.InflateException;
+import android.content.Intent;
+import android.content.ActivityNotFoundException;
 import android.util.Log;
 
 import com.wheretoshop.R;
@@ -17,11 +20,6 @@ public class GroceryListActivity extends ActionBarActivity
 {
 	private static final String GROCERY_LIST_TAG = "GROCERY_LIST_TAG";
 
-    /** 
-		Called when the activity is first created. 
-
-		@param savedInstanceState The last saved instance state of the activity.
-	*/
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -43,5 +41,31 @@ public class GroceryListActivity extends ActionBarActivity
 		}
 
 		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		switch(item.getItemId())
+		{
+			case R.id.action_bar_add:
+				openGroceryListModifyActivity();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+	}
+
+	private void openGroceryListModifyActivity()
+	{
+		try
+		{
+			Intent intent = new Intent(getApplicationContext(), GroceryListModifyActivity.class);
+			startActivity(intent);
+		}
+		catch(ActivityNotFoundException e)
+		{
+			Log.e(GROCERY_LIST_TAG, e.getMessage());
+		}
 	}
 }

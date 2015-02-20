@@ -1407,6 +1407,7 @@ containing a value of this type.
         public static final int grocery_list_activity=0x7f030017;
         public static final int home_activity=0x7f030018;
         public static final int support_simple_spinner_dropdown_item=0x7f030019;
+        public static final int switch_fragment_activity=0x7f03001a;
     }
     public static final class menu {
         public static final int grocery_list_activity_actions=0x7f0c0000;
@@ -1432,7 +1433,9 @@ containing a value of this type.
         public static final int app_name=0x7f0a0011;
         public static final int contributor_button_text=0x7f0a0012;
         public static final int grocery_list_button_text=0x7f0a0013;
-        public static final int wts_button_text=0x7f0a0014;
+        public static final int switch_manual_text=0x7f0a0014;
+        public static final int switch_search_text=0x7f0a0015;
+        public static final int wts_button_text=0x7f0a0016;
     }
     public static final class style {
         public static final int Base_TextAppearance_AppCompat=0x7f0b0000;

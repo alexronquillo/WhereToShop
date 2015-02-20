@@ -432,6 +432,7 @@ int layout abc_simple_dropdown_hint 0x7f030016
 int layout grocery_list_activity 0x7f030017
 int layout home_activity 0x7f030018
 int layout support_simple_spinner_dropdown_item 0x7f030019
+int layout switch_fragment_activity 0x7f03001a
 int menu grocery_list_activity_actions 0x7f0c0000
 int string abc_action_bar_home_description 0x7f0a0000
 int string abc_action_bar_home_description_format 0x7f0a0001
@@ -453,7 +454,9 @@ int string action_bar_remove_text 0x7f0a0010
 int string app_name 0x7f0a0011
 int string contributor_button_text 0x7f0a0012
 int string grocery_list_button_text 0x7f0a0013
-int string wts_button_text 0x7f0a0014
+int string switch_manual_text 0x7f0a0014
+int string switch_search_text 0x7f0a0015
+int string wts_button_text 0x7f0a0016
 int style Base_TextAppearance_AppCompat 0x7f0b0000
 int style Base_TextAppearance_AppCompat_Body1 0x7f0b0001
 int style Base_TextAppearance_AppCompat_Body2 0x7f0b0002
