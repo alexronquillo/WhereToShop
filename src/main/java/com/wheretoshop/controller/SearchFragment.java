@@ -9,12 +9,11 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.wheretoshop.R;
-import com.wheretoshop.controller.GroceryListActivity;
 
-public class GroceryListModifySearchFragment extends Fragment
+public class SearchFragment extends Fragment
 {
+	protected static final String SEARCH_FRAGMENT_LOG_TAG = "SEARCH_FRAGMENT_LOG_TAG";
 
-	// Todo: extend SearchFragment instead of Fragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
@@ -25,7 +24,7 @@ public class GroceryListModifySearchFragment extends Fragment
 		}
 		catch(InflateException e)
 		{
-			Log.e(GroceryListActivity.GROCERY_LIST_TAG, e.getMessage());
+			Log.e(SEARCH_FRAGMENT_LOG_TAG, e.getMessage());
 		}
 
 		return inflatedView;
