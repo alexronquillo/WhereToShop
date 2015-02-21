@@ -157,8 +157,13 @@
     <string name="action_bar_add_text">Add</string>
     <string name="action_bar_remove_text">Remove</string>
     <string name="app_name">WhereToShop</string>
+    <string name="brand_name_hint">Brand Name</string>
     <string name="contributor_button_text">Contribute!</string>
     <string name="grocery_list_button_text">Grocery List</string>
+    <string name="ounces_or_count_hint">Ounces/Count</string>
+    <string name="product_name_hint">Product Name</string>
+    <string name="quantity_button_text">Quantity</string>
+    <string name="size_description_hint">Size Description</string>
     <string name="switch_manual_text">Manual Entry</string>
     <string name="switch_search_text">Search</string>
     <string name="wts_button_text">Where to Shop</string>

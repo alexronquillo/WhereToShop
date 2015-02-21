@@ -1307,9 +1307,9 @@ containing a value of this type.
     public static final class id {
         public static final int action_bar=0x7f080033;
         public static final int action_bar_activity_content=0x7f080000;
-        public static final int action_bar_add=0x7f080045;
+        public static final int action_bar_add=0x7f080047;
         public static final int action_bar_container=0x7f080032;
-        public static final int action_bar_remove=0x7f080046;
+        public static final int action_bar_remove=0x7f080048;
         public static final int action_bar_root=0x7f08002e;
         public static final int action_bar_spinner=0x7f080001;
         public static final int action_bar_subtitle=0x7f080021;
@@ -1336,6 +1336,7 @@ containing a value of this type.
         public static final int end=0x7f080014;
         public static final int expand_activities_button=0x7f080024;
         public static final int expanded_menu=0x7f08002a;
+        public static final int fragment_container=0x7f080046;
         public static final int grocery_list_button=0x7f080042;
         public static final int grocery_list_list_view=0x7f080041;
         public static final int home=0x7f080004;
@@ -1361,6 +1362,7 @@ containing a value of this type.
         public static final int search_mag_icon=0x7f08003a;
         public static final int search_plate=0x7f08003b;
         public static final int search_src_text=0x7f08003c;
+        public static final int search_switch=0x7f080045;
         public static final int search_voice_btn=0x7f080040;
         public static final int shortcut=0x7f08002c;
         public static final int showCustom=0x7f08000f;
@@ -1405,9 +1407,11 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030015;
         public static final int abc_simple_dropdown_hint=0x7f030016;
         public static final int grocery_list_activity=0x7f030017;
-        public static final int home_activity=0x7f030018;
-        public static final int support_simple_spinner_dropdown_item=0x7f030019;
-        public static final int switch_fragment_activity=0x7f03001a;
+        public static final int grocery_list_modify_fragment=0x7f030018;
+        public static final int home_activity=0x7f030019;
+        public static final int search_fragment=0x7f03001a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001b;
+        public static final int switch_fragment_activity=0x7f03001c;
     }
     public static final class menu {
         public static final int grocery_list_activity_actions=0x7f0c0000;
@@ -1431,11 +1435,16 @@ containing a value of this type.
         public static final int action_bar_add_text=0x7f0a000f;
         public static final int action_bar_remove_text=0x7f0a0010;
         public static final int app_name=0x7f0a0011;
-        public static final int contributor_button_text=0x7f0a0012;
-        public static final int grocery_list_button_text=0x7f0a0013;
-        public static final int switch_manual_text=0x7f0a0014;
-        public static final int switch_search_text=0x7f0a0015;
-        public static final int wts_button_text=0x7f0a0016;
+        public static final int brand_name_hint=0x7f0a0012;
+        public static final int contributor_button_text=0x7f0a0013;
+        public static final int grocery_list_button_text=0x7f0a0014;
+        public static final int ounces_or_count_hint=0x7f0a0015;
+        public static final int product_name_hint=0x7f0a0016;
+        public static final int quantity_button_text=0x7f0a0017;
+        public static final int size_description_hint=0x7f0a0018;
+        public static final int switch_manual_text=0x7f0a0019;
+        public static final int switch_search_text=0x7f0a001a;
+        public static final int wts_button_text=0x7f0a001b;
     }
     public static final class style {
         public static final int Base_TextAppearance_AppCompat=0x7f0b0000;
