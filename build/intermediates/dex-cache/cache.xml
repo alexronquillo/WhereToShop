@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/arr/dev/WhereToShop/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/classes.jar"
+        jar="/Users/arr/dev/WhereToShop/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="95fd37732ec852e99f07eeb516a3650172f1d136">
-        <dex dex="/Users/arr/dev/WhereToShop/build/intermediates/pre-dexed/debug/classes-988a295a95bffb581e61c257831e5f3bab718105.jar" />
+        sha1="8f11f56e350eacabf2273f646d981356eea0ed77">
+        <dex dex="/Users/arr/dev/WhereToShop/build/intermediates/pre-dexed/debug/classes-232bf6eab07bbdf81827bd4fbadabc31d5204743.jar" />
     </item>
     <item
         jar="/Users/arr/dev/WhereToShop/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"

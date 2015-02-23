@@ -1,9 +1,9 @@
 package com.wheretoshop.controller;
 
+import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.widget.Switch;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -11,7 +11,7 @@ import android.widget.CompoundButton;
 import junit.framework.Assert;
 import com.wheretoshop.R;
 
-public abstract class SwitchFragmentActivity extends ActionBarActivity
+public abstract class SwitchFragmentActivity extends ActionBarActivity 
 {
 	private static final String SWITCH_FRAGMENT_ACTIVITY_LOG_TAG = "SWITCH_FRAGMENT_ACTIVITY_LOG_TAG";
 	private Switch searchSwitch;

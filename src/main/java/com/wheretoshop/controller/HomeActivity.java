@@ -10,7 +10,7 @@ import android.util.Log;
 
 import com.wheretoshop.R;
 
-public class HomeActivity extends ActionBarActivity
+public class HomeActivity extends ActionBarActivity 
 {
 	private final static String HOME_ACTIVITY_LOG_TAG = "HOME_ACTIVITY_LOG_TAG";
 	private Button groceryListButton;
