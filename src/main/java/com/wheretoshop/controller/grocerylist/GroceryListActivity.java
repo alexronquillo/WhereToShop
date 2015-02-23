@@ -12,10 +12,6 @@ import android.util.Log;
 
 import com.wheretoshop.R;
 
-/**
-	The GroceryList component is a component of the WhereToShop application which 
-	allows users to view, add, and remove items on his/her grocery list.
-*/
 public class GroceryListActivity extends ActionBarActivity
 {
 	public static final String GROCERY_LIST_TAG = "GROCERY_LIST_TAG";

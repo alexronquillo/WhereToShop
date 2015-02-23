@@ -10,9 +10,6 @@ public class GroceryListModifyActivity extends SwitchFragmentActivity
 	@Override
 	protected Fragment getFragment(boolean isSearch)
 	{
-		if(isSearch)
-			return new GroceryListModifySearchFragment();
-		else
-			return new GroceryListModifyManualFragment();
+		return isSearch ? new GroceryListModifySearchFragment() : new GroceryListModifyManualFragment();
 	}
 }
