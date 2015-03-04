@@ -1,30 +1,29 @@
 package com.wheretoshop.controller;
 
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.InflateException;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.wheretoshop.R;
+import com.wheretoshop.controller.GroceryListActivity;
 
-public class SearchFragment extends Fragment
+public class GroceryListModifyFragment extends Fragment
 {
-	protected static final String SEARCH_FRAGMENT_LOG_TAG = "SEARCH_FRAGMENT_LOG_TAG";
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View inflatedView = null;
 		try
 		{
-			inflatedView = inflater.inflate(R.layout.search_fragment, container, false); 
+			inflatedView = inflater.inflate(R.layout.grocery_list_modify_fragment, container, false);
 		}
 		catch(InflateException e)
 		{
-			Log.e(SEARCH_FRAGMENT_LOG_TAG, e.getMessage());
+			Log.e(GroceryListActivity.GROCERY_LIST_TAG, e.getMessage());
 		}
 
 		return inflatedView;

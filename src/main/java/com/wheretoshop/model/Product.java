@@ -2,31 +2,34 @@ package com.wheretoshop.model;
 
 import java.math.BigDecimal;
 
-class Product
+public class Product
 {
+	private int productId;
 	private String productName;
 	private String brandName;
 	private String sizeDescription; 
 	private BigDecimal ouncesOrCount;
 
-	public Product(String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription)
+	public Product(int productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription)
 	{
-		init(productName, brandName, ouncesOrCount, sizeDescription); 
+		init(productId, productName, brandName, ouncesOrCount, sizeDescription); 
 	}
 
-	public Product(String productName, BigDecimal ouncesOrCount, String sizeDescription)
+	public Product(int productId, String productName, BigDecimal ouncesOrCount, String sizeDescription)
 	{
-		init(productName, "", ouncesOrCount, sizeDescription);
+		init(productId, productName, "", ouncesOrCount, sizeDescription);
 	}
 
-	private void init(String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription)
+	private void init(int productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription)
 	{
+		this.productId = productId;
 		this.productName = productName;
 		this.brandName = brandName;
 		this.sizeDescription = sizeDescription;
 		this.ouncesOrCount = ouncesOrCount;
 	}
 
+	public int getProductId() { return productId; }
 	public String getProductName() { return productName; }
 	public String getBrandName() { return brandName; }
 	public String getSizeDescription() { return sizeDescription; }

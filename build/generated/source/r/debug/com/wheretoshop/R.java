@@ -761,10 +761,10 @@ containing a value of this type.
     public static final class id {
         public static final int action_bar=0x7f08001a;
         public static final int action_bar_activity_content=0x7f080000;
-        public static final int action_bar_add=0x7f080048;
+        public static final int action_bar_add=0x7f08004e;
         public static final int action_bar_container=0x7f080019;
         public static final int action_bar_overlay_layout=0x7f08001d;
-        public static final int action_bar_remove=0x7f080049;
+        public static final int action_bar_remove=0x7f08004f;
         public static final int action_bar_root=0x7f080018;
         public static final int action_bar_subtitle=0x7f080021;
         public static final int action_bar_title=0x7f080020;
@@ -777,6 +777,7 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f080023;
         public static final int always=0x7f080011;
         public static final int beginning=0x7f08000d;
+        public static final int brand_name_textview=0x7f080048;
         public static final int checkbox=0x7f08002b;
         public static final int collapseActionView=0x7f080012;
         public static final int contributor_button=0x7f080045;
@@ -788,7 +789,7 @@ containing a value of this type.
         public static final int end=0x7f08000e;
         public static final int expand_activities_button=0x7f080024;
         public static final int expanded_menu=0x7f08002a;
-        public static final int fragment_container=0x7f080047;
+        public static final int fragment_container=0x7f08004d;
         public static final int grocery_list_button=0x7f080043;
         public static final int grocery_list_list_view=0x7f080042;
         public static final int home=0x7f080003;
@@ -803,6 +804,8 @@ containing a value of this type.
         public static final int never=0x7f080014;
         public static final int none=0x7f080010;
         public static final int normal=0x7f080005;
+        public static final int ounces_count_textview=0x7f08004b;
+        public static final int product_name_textview=0x7f080049;
         public static final int progress_circular=0x7f080034;
         public static final int progress_horizontal=0x7f080035;
         public static final int radio=0x7f08002d;
@@ -816,13 +819,16 @@ containing a value of this type.
         public static final int search_go_btn=0x7f080040;
         public static final int search_mag_icon=0x7f08003b;
         public static final int search_plate=0x7f08003c;
+        public static final int search_results_listview=0x7f080047;
         public static final int search_src_text=0x7f08003d;
-        public static final int search_switch=0x7f080046;
+        public static final int search_switch=0x7f08004c;
+        public static final int search_view=0x7f080046;
         public static final int search_voice_btn=0x7f080041;
         public static final int shortcut=0x7f08002c;
         public static final int showCustom=0x7f080009;
         public static final int showHome=0x7f08000a;
         public static final int showTitle=0x7f08000b;
+        public static final int size_description_textview=0x7f08004a;
         public static final int split_action_bar=0x7f08001c;
         public static final int submit_area=0x7f08003f;
         public static final int tabMode=0x7f080006;
@@ -866,8 +872,9 @@ containing a value of this type.
         public static final int grocery_list_modify_fragment=0x7f030019;
         public static final int home_activity=0x7f03001a;
         public static final int search_fragment=0x7f03001b;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001c;
-        public static final int switch_fragment_activity=0x7f03001d;
+        public static final int search_list_item=0x7f03001c;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
+        public static final int switch_fragment_activity=0x7f03001e;
     }
     public static final class menu {
         public static final int grocery_list_activity_actions=0x7f0c0000;
