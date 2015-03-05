@@ -1,11 +1,13 @@
 package com.wheretoshop.model;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.net.ConnectException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -59,8 +61,14 @@ public class Connection {
             HttpResponse httpResponse = httpClient.execute(httpGet);
 			return decodeResponse(httpResponse);
  
-        } catch (Exception e) {
-            Log.e(LOG_TAG, e.getMessage());
+        }
+		catch(ConnectException e)
+		{
+            Log.e(LOG_TAG, "ConnectException: " + e.getMessage());
+			return null;
+		}
+		catch (Exception e) {
+            Log.e(LOG_TAG, "Exception: " + e.getMessage());
 			return null;
         }
 	}
@@ -80,6 +88,11 @@ public class Connection {
 			inputStream.close();
 
 			return stringBuilder.toString();
+		}
+		catch(ConnectException e)
+		{
+            Log.e(LOG_TAG, "ConnectException: " + e.getMessage());
+			return null;
 		}
 		catch(Exception e)
 		{

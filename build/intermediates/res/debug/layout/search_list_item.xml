@@ -16,7 +16,7 @@
 			android:id="@+id/brand_name_textview"
 			android:layout_height="wrap_content"
 			android:layout_width="0dp"
-			android:layout_gravity="center"
+			android:gravity="center"
 			android:layout_weight="1"
 			/>
 
@@ -24,7 +24,7 @@
 			android:id="@+id/product_name_textview"
 			android:layout_height="wrap_content"
 			android:layout_width="0dp"
-			android:layout_gravity="center"
+			android:gravity="center"
 			android:layout_weight="1"
 			/>
 	</LinearLayout>
@@ -39,7 +39,7 @@
 			android:id="@+id/size_description_textview"
 			android:layout_height="wrap_content"
 			android:layout_width="0dp"
-			android:layout_gravity="center"
+			android:gravity="center"
 			android:layout_weight="1"
 			/>
 
@@ -47,7 +47,7 @@
 			android:id="@+id/ounces_count_textview"
 			android:layout_height="wrap_content"
 			android:layout_width="0dp"
-			android:layout_gravity="center"
+			android:gravity="center"
 			android:layout_weight="1"
 			/>
 	</LinearLayout>
