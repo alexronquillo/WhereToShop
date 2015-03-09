@@ -9,9 +9,11 @@ import android.widget.Switch;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.CompoundButton;
 import junit.framework.Assert;
-import com.wheretoshop.R;
 
-public abstract class SwitchFragmentActivity extends ActionBarActivity 
+import com.wheretoshop.R;
+import com.wheretoshop.model.FragmentSwitcher;
+
+public abstract class SwitchFragmentActivity extends ActionBarActivity implements FragmentSwitcher
 {
 	private static final String SWITCH_FRAGMENT_ACTIVITY_LOG_TAG = "SWITCH_FRAGMENT_ACTIVITY_LOG_TAG";
 	private Switch searchSwitch;
@@ -21,9 +23,6 @@ public abstract class SwitchFragmentActivity extends ActionBarActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.switch_fragment_activity);
-
-		Assert.assertNotNull(findViewById(R.id.fragment_container));
-		Assert.assertNotNull(findViewById(R.id.search_switch));
 
 		searchSwitch = (Switch)findViewById(R.id.search_switch);
 		searchSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -39,7 +38,6 @@ public abstract class SwitchFragmentActivity extends ActionBarActivity
 
 		if(fragment == null)
 		{
-			Assert.assertNotNull(searchSwitch);
 			fragment = getFragment(searchSwitch.isChecked());
 			fragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit();
 		}
@@ -50,6 +48,14 @@ public abstract class SwitchFragmentActivity extends ActionBarActivity
 		Fragment fragment = getFragment(switchIsChecked);
 		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 		transaction.replace(R.id.fragment_container, fragment).commit();
+	}
+
+	public void switchFragment()
+	{
+		if(searchSwitch != null)
+		{
+			searchSwitch.toggle();
+		}
 	}
 
 	protected abstract Fragment getFragment(boolean switchIsChecked);

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.view.InflateException;
 import android.widget.SearchView;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView;
 import android.os.Bundle;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -23,7 +25,7 @@ import com.wheretoshop.model.ProductTableDataSource;
 import com.wheretoshop.model.Product;
 import com.wheretoshop.model.SearchTaskHandler;
 
-public class ProductSearchFragment extends Fragment implements SearchTaskHandler
+public abstract class ProductSearchFragment extends Fragment implements SearchTaskHandler
 {
 	protected static final String LOG_TAG = "SEARCH_FRAGMENT_LOG_TAG";
 	private SearchListArrayAdapter searchResultsAdapter; 
@@ -47,6 +49,15 @@ public class ProductSearchFragment extends Fragment implements SearchTaskHandler
 
 			searchResultsListView = (ListView)inflatedView.findViewById(R.id.search_results_listview);
 			searchResultsListView.setAdapter(searchResultsAdapter);
+			searchResultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView parent, View view, int position, long id)
+				{
+					Object product = parent.getItemAtPosition(position);
+					if(product instanceof Product)
+						onClickListItem((Product)product);	
+				}
+			});
 
 			searchView = (SearchView)inflatedView.findViewById(R.id.search_view);
 			searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -54,7 +65,11 @@ public class ProductSearchFragment extends Fragment implements SearchTaskHandler
 				public boolean onQueryTextChange(String newText) { /* return executeSearchTask(newText); */ return false; }
 
 				@Override
-				public boolean onQueryTextSubmit(String query) { return executeSearchTask(query); }
+				public boolean onQueryTextSubmit(String query) 
+				{ 
+					searchView.clearFocus();
+					return executeSearchTask(query); 
+				}
 			});
 			
 		}
@@ -115,4 +130,6 @@ public class ProductSearchFragment extends Fragment implements SearchTaskHandler
 			handler.handleSearchTask(products);
 		}
 	}
+
+	public abstract void onClickListItem(Product product);
 }
