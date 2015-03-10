@@ -15,10 +15,15 @@ import junit.framework.Assert;
 
 public class ProductTableDataSource
 {
-	private static final String GET_PRODUCTS_BY_PRODUCT_OR_BRAND_NAME_PATH = "/cgi-bin/get_products_by_product_or_brand_name.py";
-	private static final String GET_SIZE_DESCRIPTIONS_BY_PRODUCT_NAME_AND_BRAND_NAME = "/cgi-bin/get_size_descriptions_by_product_id.py";
-	private static final String GET_BRAND_NAMES_BY_PRODUCT_NAME = "cgi-bin/get_brand_name_by_product_name.py";
-	private static final String GET_OUNCES_OR_COUNT_BY_PRODUCT_NAME_SIZE_DESCRIPTION_AND_BRAND_NAME = "cgi-bin/get_ounces_count_by_product_size_brand_name.py";
+	private static final String GET_PRODUCTS_BY_PRODUCT_OR_BRAND_NAME_PATH = 
+		"/cgi-bin/get_products_by_product_or_brand_name.py";
+	private static final String GET_SIZE_DESCRIPTIONS_BY_PRODUCT_NAME_AND_BRAND_NAME = 
+		"/cgi-bin/get_size_descriptions_by_product_name_and_brand_name.py";
+	private static final String GET_BRAND_NAMES_BY_PRODUCT_NAME = 
+		"cgi-bin/get_brand_name_by_product_name.py";
+	private static final String GET_OUNCES_OR_COUNT_BY_PRODUCT_NAME_SIZE_DESCRIPTION_AND_BRAND_NAME = 
+		"cgi-bin/get_ounces_or_count_by_product_name_size_description_and_brand_name.py";
+
 	private static final String PRODUCT_OR_BRAND_NAME_KEY = "product_or_brand_name";
 	private static final String PRODUCT_NAME_KEY = "product_name";
 	private static final String BRAND_NAME_KEY = "brand_name";
