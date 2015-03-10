@@ -12,25 +12,22 @@
 		android:hint="@string/product_name_hint"
 		/>
 
-	<EditText
-		android:id="@+id/brand_name_edittext"
+	<Spinner
+		android:id="@+id/brand_name_spinner"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:hint="@string/brand_name_hint"
 		/>
 
-	<EditText
-		android:id="@+id/size_description_edittext"
+	<Spinner
+		android:id="@+id/size_description_spinner"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:hint="@string/size_description_hint"
 		/>
 
-	<EditText
-		android:id="@+id/ounces_or_count_edittext"
+	<Spinner
+		android:id="@+id/ounces_or_count_spinner"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:hint="@string/ounces_or_count_hint"
 		/>
 
 	<Button

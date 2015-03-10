@@ -244,7 +244,7 @@ int id action_mode_close_button 0x7f080022
 int id activity_chooser_view_content 0x7f080023
 int id always 0x7f080011
 int id beginning 0x7f08000d
-int id brand_name_edittext 0x7f080044
+int id brand_name_spinner 0x7f080044
 int id brand_name_textview 0x7f08004c
 int id checkbox 0x7f08002b
 int id collapseActionView 0x7f080012
@@ -273,7 +273,7 @@ int id never 0x7f080014
 int id none 0x7f080010
 int id normal 0x7f080005
 int id ounces_count_textview 0x7f08004f
-int id ounces_or_count_edittext 0x7f080046
+int id ounces_or_count_spinner 0x7f080046
 int id product_name_edittext 0x7f080043
 int id product_name_textview 0x7f08004d
 int id progress_circular 0x7f080034
@@ -298,7 +298,7 @@ int id shortcut 0x7f08002c
 int id showCustom 0x7f080009
 int id showHome 0x7f08000a
 int id showTitle 0x7f08000b
-int id size_description_edittext 0x7f080045
+int id size_description_spinner 0x7f080045
 int id size_description_textview 0x7f08004e
 int id split_action_bar 0x7f08001c
 int id submit_area 0x7f08003f

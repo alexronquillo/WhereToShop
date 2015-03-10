@@ -16,10 +16,14 @@ import junit.framework.Assert;
 public class ProductTableDataSource
 {
 	private static final String GET_PRODUCTS_BY_PRODUCT_OR_BRAND_NAME_PATH = "/cgi-bin/get_products_by_product_or_brand_name.py";
-	private static final String GET_SIZE_DESCRIPTIONS_BY_PRODUCT_ID = "/cgi-bin/get_size_descriptions_by_product_id.py";
+	private static final String GET_SIZE_DESCRIPTIONS_BY_PRODUCT_NAME_AND_BRAND_NAME = "/cgi-bin/get_size_descriptions_by_product_id.py";
+	private static final String GET_BRAND_NAMES_BY_PRODUCT_NAME = "cgi-bin/get_brand_name_by_product_name.py";
+	private static final String GET_OUNCES_OR_COUNT_BY_PRODUCT_NAME_SIZE_DESCRIPTION_AND_BRAND_NAME = "cgi-bin/get_ounces_count_by_product_size_brand_name.py";
 	private static final String PRODUCT_OR_BRAND_NAME_KEY = "product_or_brand_name";
 	private static final String PRODUCT_NAME_KEY = "product_name";
 	private static final String BRAND_NAME_KEY = "brand_name";
+	private static final String SIZE_DESCRIPTION = "size_description";
+	private static final String OUNCES_OR_COUNT = "ounces_or_count";
 	private static final String LOG_TAG = "PRODUCT_TABLE_DS_LOG_TAG";
 
 	public List<Product> getProductsByProductOrBrandName(String productOrBrandName)
@@ -32,15 +36,37 @@ public class ProductTableDataSource
 		return decodeJSONProductList(responseString);
 	}
 
-	public Set<String> getSizeDescriptions(String productName, String brandName)
+	public Set<String> getSizeDescriptionsByProductNameAndBrandName(String productName, String brandName)
 	{
 		List<NameValuePair> queryParams = new ArrayList<NameValuePair>();
 		queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, productName));
 		queryParams.add(new BasicNameValuePair(BRAND_NAME_KEY, brandName));
 
-		String responseString = new Connection().get(GET_SIZE_DESCRIPTIONS_BY_PRODUCT_ID, queryParams);
+		String responseString = new Connection().get(GET_SIZE_DESCRIPTIONS_BY_PRODUCT_NAME_AND_BRAND_NAME, queryParams);
 
-		return decodeJSONSizeDescriptionSet(responseString);
+		return decodeJSONStringSet(responseString);
+	}
+
+	public Set<String> getBrandNamesByProductName(String productName)
+	{
+		List<NameValuePair> queryParams = new ArrayList<NameValuePair>();
+		queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, productName));
+
+		String responseString = new Connection().get(GET_BRAND_NAMES_BY_PRODUCT_NAME, queryParams);
+
+		return decodeJSONStringSet(responseString);
+	}
+	
+	public Set<String> getOuncesOrCountByProductNameBrandNameAndSizeDescription(String productName, String brandName, String sizeDescription)
+	{
+		List<NameValuePair> queryParams = new ArrayList<NameValuePair>();
+		queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, productName));
+		queryParams.add(new BasicNameValuePair(BRAND_NAME_KEY, brandName));
+		queryParams.add(new BasicNameValuePair(SIZE_DESCRIPTION, sizeDescription));
+
+		String responseString = new Connection().get(GET_OUNCES_OR_COUNT_BY_PRODUCT_NAME_SIZE_DESCRIPTION_AND_BRAND_NAME, queryParams);
+
+		return decodeJSONStringSet(responseString);
 	}
 
 	private JSONArray getResultArray(String json)
@@ -66,7 +92,7 @@ public class ProductTableDataSource
 		return resultArray;
 	}
 
-	private Set<String> decodeJSONSizeDescriptionSet(String json)
+	private Set<String> decodeJSONStringSet(String json)
 	{
 		Set<String> resultSet = null;
 

@@ -777,7 +777,7 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f080023;
         public static final int always=0x7f080011;
         public static final int beginning=0x7f08000d;
-        public static final int brand_name_edittext=0x7f080044;
+        public static final int brand_name_spinner=0x7f080044;
         public static final int brand_name_textview=0x7f08004c;
         public static final int checkbox=0x7f08002b;
         public static final int collapseActionView=0x7f080012;
@@ -806,7 +806,7 @@ containing a value of this type.
         public static final int none=0x7f080010;
         public static final int normal=0x7f080005;
         public static final int ounces_count_textview=0x7f08004f;
-        public static final int ounces_or_count_edittext=0x7f080046;
+        public static final int ounces_or_count_spinner=0x7f080046;
         public static final int product_name_edittext=0x7f080043;
         public static final int product_name_textview=0x7f08004d;
         public static final int progress_circular=0x7f080034;
@@ -831,7 +831,7 @@ containing a value of this type.
         public static final int showCustom=0x7f080009;
         public static final int showHome=0x7f08000a;
         public static final int showTitle=0x7f08000b;
-        public static final int size_description_edittext=0x7f080045;
+        public static final int size_description_spinner=0x7f080045;
         public static final int size_description_textview=0x7f08004e;
         public static final int split_action_bar=0x7f08001c;
         public static final int submit_area=0x7f08003f;
