@@ -62,7 +62,7 @@ public abstract class ProductSearchFragment extends Fragment implements SearchTa
 			searchView = (SearchView)inflatedView.findViewById(R.id.search_view);
 			searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 				@Override
-				public boolean onQueryTextChange(String newText) { /* return executeSearchTask(newText); */ return false; }
+				public boolean onQueryTextChange(String newText) { return false; }
 
 				@Override
 				public boolean onQueryTextSubmit(String query) 
