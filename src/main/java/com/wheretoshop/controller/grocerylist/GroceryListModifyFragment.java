@@ -8,10 +8,14 @@ import android.view.InflateException;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AdapterView;
 import android.os.Bundle;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.R.layout;
+import android.text.TextWatcher;
+import android.text.Editable;
 
 import java.util.Set;
 
@@ -24,6 +28,10 @@ import com.wheretoshop.model.ModifiedProductHandler;
 
 public class GroceryListModifyFragment extends Fragment implements ModifiedProductHandler
 {
+	private EditText productNameEditText;
+	private Spinner brandNameSpinner;
+	private Spinner sizeDescriptionSpinner;
+	private Spinner ouncesOrCountSpinner;
 	private ArrayAdapter<String> brandNameAdapter;
 	private ArrayAdapter<String> sizeDescriptionAdapter;
 	private ArrayAdapter<String> ouncesOrCountAdapter;
@@ -53,28 +61,59 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 			sizeDescriptionAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item);
 			ouncesOrCountAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item);
 
-			EditText productNameEditText = (EditText)inflatedView.findViewById(R.id.product_name_edittext);
+			productNameEditText = (EditText)inflatedView.findViewById(R.id.product_name_edittext);
+			productNameEditText.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void afterTextChanged(Editable s) { /* Do nothing */ }
 
-			Spinner brandNameSpinner = (Spinner)inflatedView.findViewById(R.id.brand_name_spinner);
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after) { /* Do nothing */ }
+
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count)
+				{
+					executeBrandNameGetTask();
+				}
+			});
+
+			brandNameSpinner = (Spinner)inflatedView.findViewById(R.id.brand_name_spinner);
+			brandNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+				@Override
+				public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+				{
+					executeSizeDescriptionGetTask();
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView parent) { /* Do nothing */ }
+			});
 			brandNameSpinner.setAdapter(brandNameAdapter);
 
-			Spinner sizeDescriptionSpinner = (Spinner)inflatedView.findViewById(R.id.size_description_spinner);
+			sizeDescriptionSpinner = (Spinner)inflatedView.findViewById(R.id.size_description_spinner);
+			sizeDescriptionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+				@Override
+				public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+				{
+					executeOuncesOrCountGetTask();
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView parent) { /* Do nothing */ }
+			});
 			sizeDescriptionSpinner.setAdapter(sizeDescriptionAdapter);
 
-			Spinner ouncesOrCountSpinner = (Spinner)inflatedView.findViewById(R.id.ounces_or_count_spinner);
+			ouncesOrCountSpinner = (Spinner)inflatedView.findViewById(R.id.ounces_or_count_spinner);
 			ouncesOrCountSpinner.setAdapter(ouncesOrCountAdapter);
 
 			if(product != null)
 			{
 				productNameEditText.setText(product.getProductName());
-				executeBrandNameGetTask();
-				executeSizeDescriptionGetTask();
-				executeOuncesOrCountGetTask();
+				productNameEditText.setEnabled(false);
 			}
 		}
 		catch(InflateException e)
 		{
-			Log.e(LOG_TAG, e.getMessage());
+			Log.e(LOG_TAG, "Error: " + e.getMessage());
 		}
 
 		return inflatedView;
@@ -84,7 +123,11 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 	{
 		try
 		{
-			new BrandNameGetTask(this).execute();
+			if(productNameEditText != null)
+			{
+				String productName = productNameEditText.getText().toString();
+				new BrandNameGetTask(this).execute(productName);
+			}
 		}
 		catch(Exception e)
 		{
@@ -96,7 +139,12 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 	{
 		try
 		{
-			new SizeDescriptionGetTask(this).execute();
+			if(productNameEditText != null && brandNameSpinner != null)
+			{
+				String productName = productNameEditText.getText().toString();
+				String brandName = brandNameSpinner.getSelectedItem().toString();
+				new SizeDescriptionGetTask(this).execute(productName, brandName);
+			}
 		}
 		catch(Exception e)
 		{
@@ -108,7 +156,13 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 	{
 		try
 		{
-			new OuncesOrCountGetTask(this).execute();
+			if(productNameEditText != null && brandNameSpinner != null && sizeDescriptionSpinner != null)
+			{
+				String productName = productNameEditText.getText().toString();
+				String brandName = brandNameSpinner.getSelectedItem().toString();
+				String sizeDescription = sizeDescriptionSpinner.getSelectedItem().toString();
+				new OuncesOrCountGetTask(this).execute(productName, brandName, sizeDescription);
+			}
 		}
 		catch(Exception e)
 		{
@@ -118,14 +172,46 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 
 	private void refreshBrandNameSpinner(Set<String> brandNames) 
 	{
+		try
+		{
+			brandNameAdapter.clear();
+			brandNameAdapter.addAll(brandNames);
+			brandNameAdapter.notifyDataSetChanged();
+		}
+		catch(Exception e)
+		{
+			Log.e(LOG_TAG, "Error: " + e.getMessage());
+		}
 	}
 
 	private void refreshSizeDescriptionSpinner(Set<String> sizeDescriptions) 
 	{
+		try
+		{
+			sizeDescriptionAdapter.clear();
+			sizeDescriptionAdapter.addAll(sizeDescriptions);
+			sizeDescriptionAdapter.notifyDataSetChanged();
+		}
+		catch(Exception e)
+		{
+			Log.e(LOG_TAG, "Error: " + e.getMessage());
+		}
+
 	}
 
 	private void refreshOuncesOrCount(Set<String> ouncesOrCounts) 
 	{
+		try
+		{
+			ouncesOrCountAdapter.clear();
+			ouncesOrCountAdapter.addAll(ouncesOrCounts);
+			ouncesOrCountAdapter.notifyDataSetChanged();
+		}
+		catch(Exception e)
+		{
+			Log.e(LOG_TAG, "Error: " + e.getMessage());
+		}
+
 	}
 
 	@Override
@@ -140,11 +226,11 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 					break;
 
 				case SIZE_DESCRIPTION:
-					// Todo
+					refreshSizeDescriptionSpinner(column);
 					break;
 
 				case OUNCES_OR_COUNT:
-					// Todo
+					refreshOuncesOrCount(column);
 					break;
 
 				default:

@@ -85,7 +85,7 @@ public abstract class ProductSearchFragment extends Fragment implements SearchTa
 	{
 		try
 		{
-			new SearchTask(ProductSearchFragment.this).execute(query);
+			new SearchTask(this).execute(query);
 		}
 		catch(Exception e)
 		{
