@@ -13,4 +13,5 @@
 	<string name="size_description_hint">Size Description</string>
 	<string name="ounces_or_count_hint">Ounces/Count</string>
 	<string name="quantity_button_text">Quantity</string>
+	<string name="submit_button_text">Submit</string>
 </resources>

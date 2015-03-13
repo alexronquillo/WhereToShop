@@ -35,6 +35,12 @@
 		android:layout_height="wrap_content"
 		android:text="@string/quantity_button_text"
 		/>
+
+	<Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/submit_button_text"
+		/>
 			
 </LinearLayout>
 
