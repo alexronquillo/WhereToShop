@@ -26,7 +26,19 @@ public class GroceryList
 		return instance;
 	}
 
-	public List<GroceryListProduct> getGroceryList() { return groceryList; }
+	public List<GroceryListProduct> getGroceryList() 
+	{ 
+		List<GroceryListProduct> groceryList = new ArrayList<GroceryListProduct>();
+		for(GroceryListProduct product : this.groceryList)
+			groceryList.add(product);
+
+		return groceryList; 
+	}
+
+	public void add(GroceryListProduct product)
+	{
+		groceryList.add(product);
+	}
 
 	private void backupList() { /* Todo */ }
 	private void reloadList() { /* Todo */ }
