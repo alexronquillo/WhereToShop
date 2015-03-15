@@ -44,9 +44,12 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 		super.onCreate(savedInstanceState);
 
 		Bundle args = getArguments();
-		Product product;
-		if(args != null && (product = (Product)args.getSerializable(GroceryListModifyActivity.PRODUCT_ARG_KEY)) != null)
-			this.product = product;
+		if(args != null)
+		{
+			Product product;
+			if(args != null && (product = (Product)args.getSerializable(GroceryListModifyActivity.PRODUCT_ARG_KEY)) != null)
+				this.product = product;
+		}
 	}
 
 	@Override

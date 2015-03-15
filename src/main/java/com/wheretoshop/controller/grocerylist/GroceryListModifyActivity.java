@@ -2,18 +2,45 @@ package com.wheretoshop.controller;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.content.Intent;
+import android.util.Log;
 
 import com.wheretoshop.R;
 import com.wheretoshop.model.Product;
 
 public class GroceryListModifyActivity extends SwitchFragmentActivity
 {
+	private static final String LOG_TAG = "GroceryListModifyActivity_LOG_TAG";
 	public static final String PRODUCT_ARG_KEY = "PRODUCT_KEY";
 	private Product product = null;	
+	private boolean addProduct = false;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+
+		Intent intent = getIntent();
+		if(intent != null)
+		{
+			Boolean addProduct = intent.getBooleanExtra(GroceryListActivity.ADD_MODIFY_FLAG_KEY, false);
+			this.addProduct = addProduct;
+		}
+	}
 
 	public void setProduct(Product product)
 	{
 		this.product = product;
+	}
+
+	public void setAddProductFlag(boolean flag)
+	{
+		this.addProduct = flag;
+	}
+
+	public boolean isAddProduct()
+	{
+		return addProduct;
 	}
 
 	@Override

@@ -15,6 +15,9 @@ import com.wheretoshop.R;
 public class GroceryListActivity extends ActionBarActivity
 {
 	public static final String GROCERY_LIST_TAG = "GROCERY_LIST_TAG";
+	public static final String ADD_MODIFY_FLAG_KEY = "ADD_MODIFY_FLAG_KEY";
+	public static final Boolean ADD_PRODUCT_FLAG = true;
+	public static final Boolean MODIFY_PRODUCT_FLAG = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -45,18 +48,19 @@ public class GroceryListActivity extends ActionBarActivity
 		switch(item.getItemId())
 		{
 			case R.id.action_bar_add:
-				openGroceryListModifyActivity();
+				openGroceryListModifyActivity(ADD_PRODUCT_FLAG);
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}
 	}
 
-	private void openGroceryListModifyActivity()
+	private void openGroceryListModifyActivity(boolean flag)
 	{
 		try
 		{
 			Intent intent = new Intent(getApplicationContext(), GroceryListModifyActivity.class);
+			intent.putExtra(ADD_MODIFY_FLAG_KEY, flag);
 			startActivity(intent);
 		}
 		catch(ActivityNotFoundException e)
