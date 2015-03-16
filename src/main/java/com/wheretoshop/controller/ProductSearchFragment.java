@@ -25,39 +25,23 @@ import com.wheretoshop.model.ProductTableDataSource;
 import com.wheretoshop.model.Product;
 import com.wheretoshop.model.SearchTaskHandler;
 
-public abstract class ProductSearchFragment extends Fragment implements SearchTaskHandler
-{
+public abstract class ProductSearchFragment extends Fragment implements SearchTaskHandler {
 	protected static final String LOG_TAG = "SEARCH_FRAGMENT_LOG_TAG";
 	private SearchListArrayAdapter searchResultsAdapter; 
 	private SearchView searchView;
 	private ListView searchResultsListView;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		searchResultsAdapter = new SearchListArrayAdapter(getActivity(), new ArrayList<Product>());
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View inflatedView = null;
-		try
-		{
+		try {
 			inflatedView = inflater.inflate(R.layout.search_fragment, container, false); 
-
-			searchResultsListView = (ListView)inflatedView.findViewById(R.id.search_results_listview);
-			searchResultsListView.setAdapter(searchResultsAdapter);
-			searchResultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-				@Override
-				public void onItemClick(AdapterView parent, View view, int position, long id)
-				{
-					Object product = parent.getItemAtPosition(position);
-					if(product instanceof Product)
-						onClickListItem((Product)product);	
-				}
-			});
 
 			searchView = (SearchView)inflatedView.findViewById(R.id.search_view);
 			searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -65,30 +49,37 @@ public abstract class ProductSearchFragment extends Fragment implements SearchTa
 				public boolean onQueryTextChange(String newText) { return false; }
 
 				@Override
-				public boolean onQueryTextSubmit(String query) 
-				{ 
+				public boolean onQueryTextSubmit(String query) { 
 					searchView.clearFocus();
 					return executeSearchTask(query); 
 				}
 			});
 			
+			searchResultsListView = (ListView)inflatedView.findViewById(R.id.search_results_listview);
+			searchResultsListView.setAdapter(searchResultsAdapter);
+			searchResultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView parent, View view, int position, long id) {
+					Object product = parent.getItemAtPosition(position);
+					if(product instanceof Product)
+						onClickListItem((Product)product);	
+					else
+						Log.e(LOG_TAG, "Error: Product in search results is not of type Product");
+				}
+			});
 		}
-		catch(InflateException e)
-		{
+		catch(InflateException e) {
 			Log.e(LOG_TAG, e.getMessage());
 		}
 
 		return inflatedView;
 	}
 
-	private boolean executeSearchTask(String query)
-	{
-		try
-		{
+	private boolean executeSearchTask(String query) {
+		try {
 			new SearchTask(this).execute(query);
 		}
-		catch(Exception e)
-		{
+		catch(Exception e) {
 			Log.e(LOG_TAG, e.getMessage());
 			return false;
 		}
@@ -96,12 +87,8 @@ public abstract class ProductSearchFragment extends Fragment implements SearchTa
 		return true;
 	}
 
-	public void replaceSearchList(List<Product> products)
-	{
-		Assert.assertNotNull(searchResultsAdapter);
-
-		if(products != null)
-		{
+	public void replaceSearchList(List<Product> products) {
+		if(products != null) {
 			searchResultsAdapter.replace(products);
 			searchResultsAdapter.notifyDataSetChanged();
 		}
@@ -110,8 +97,7 @@ public abstract class ProductSearchFragment extends Fragment implements SearchTa
 	@Override	
 	public void handleSearchTask(List<Product> products) { replaceSearchList(products); }
 
-	class SearchTask extends AsyncTask<String, String, List<Product>>
-	{
+	class SearchTask extends AsyncTask<String, String, List<Product>> {
 		private List<Product> products;
 		private SearchTaskHandler handler;
 

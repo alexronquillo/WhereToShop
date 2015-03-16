@@ -31,8 +31,7 @@ public class Connection {
 
     public String post(String path, List<NameValuePair> params) {
 
-        try 
-		{
+        try {
             HttpClient httpClient = new DefaultHttpClient();
 
             HttpPost httpPost = new HttpPost(URL + path);
@@ -46,8 +45,7 @@ public class Connection {
         }
     }
 
-	public String get(String path, List<NameValuePair> params)
-	{
+	public String get(String path, List<NameValuePair> params) {
 		try {
 			Uri.Builder uriBuilder = Uri.parse(URL + path).buildUpon();
 
@@ -61,41 +59,32 @@ public class Connection {
             HttpResponse httpResponse = httpClient.execute(httpGet);
 			return decodeResponse(httpResponse);
  
-        }
-		catch(ConnectException e)
-		{
+        } catch(ConnectException e) {
             Log.e(LOG_TAG, "ConnectException: " + e.getMessage());
 			return null;
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
             Log.e(LOG_TAG, "Exception: " + e.getMessage());
 			return null;
         }
 	}
 
-	private String decodeResponse(HttpResponse response)
-	{
-		try
-		{
+	private String decodeResponse(HttpResponse response) {
+		try {
 			HttpEntity httpEntity = response.getEntity();
 			InputStream inputStream = httpEntity.getContent();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, ENCODING), 8);
 			StringBuilder stringBuilder = new StringBuilder();
 			String line;
-			while ((line = reader.readLine()) != null) {
+			while ((line = reader.readLine()) != null) 
 				stringBuilder.append(line + "\n");
-			}
+			
 			inputStream.close();
 
 			return stringBuilder.toString();
-		}
-		catch(ConnectException e)
-		{
+		} catch(ConnectException e) {
             Log.e(LOG_TAG, "ConnectException: " + e.getMessage());
 			return null;
-		}
-		catch(Exception e)
-		{
+		} catch(Exception e) {
 			Log.e(LOG_TAG, e.getMessage());
 			return null;
 		}

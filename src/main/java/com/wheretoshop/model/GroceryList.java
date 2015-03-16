@@ -5,20 +5,17 @@ import android.content.Context;
 import java.util.List;
 import java.util.ArrayList;
 
-public class GroceryList
-{
+public class GroceryList {
 	private static GroceryList instance;
 	private Context context;
 	private List<GroceryListProduct> groceryList;
 
-	private GroceryList(Context context)
-	{
+	private GroceryList(Context context) {
 		this.context = context;	
 		this.groceryList = new ArrayList<GroceryListProduct>();
 	}
 
-	public static GroceryList getInstance(Context context)
-	{
+	public static GroceryList getInstance(Context context) {
 		if (instance != null)
 			return instance;
 
@@ -26,8 +23,7 @@ public class GroceryList
 		return instance;
 	}
 
-	public List<GroceryListProduct> getGroceryList() 
-	{ 
+	public List<GroceryListProduct> getGroceryList() { 
 		List<GroceryListProduct> groceryList = new ArrayList<GroceryListProduct>();
 		for(GroceryListProduct product : this.groceryList)
 			groceryList.add(product);
@@ -35,8 +31,7 @@ public class GroceryList
 		return groceryList; 
 	}
 
-	public void add(GroceryListProduct product)
-	{
+	public void add(GroceryListProduct product) {
 		groceryList.add(product);
 	}
 

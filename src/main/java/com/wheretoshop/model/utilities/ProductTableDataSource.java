@@ -13,8 +13,7 @@ import org.json.JSONObject;
 import org.json.JSONException;
 import junit.framework.Assert;
 
-public class ProductTableDataSource
-{
+public class ProductTableDataSource {
 	private static final String GET_PRODUCTS_BY_PRODUCT_OR_BRAND_NAME_PATH = 
 		"/cgi-bin/get_products_by_product_or_brand_name.py";
 	private static final String GET_SIZE_DESCRIPTIONS_BY_PRODUCT_NAME_AND_BRAND_NAME = 
@@ -31,8 +30,7 @@ public class ProductTableDataSource
 	private static final String OUNCES_OR_COUNT = "ounces_or_count";
 	private static final String LOG_TAG = "PRODUCT_TABLE_DS_LOG_TAG";
 
-	public List<Product> getProductsByProductOrBrandName(String productOrBrandName)
-	{
+	public List<Product> getProductsByProductOrBrandName(String productOrBrandName) {
 		List<NameValuePair> queryParams = new ArrayList<NameValuePair>();
 		queryParams.add(new BasicNameValuePair(PRODUCT_OR_BRAND_NAME_KEY, productOrBrandName));
 
@@ -41,8 +39,7 @@ public class ProductTableDataSource
 		return decodeJSONProductList(responseString);
 	}
 
-	public Set<String> getSizeDescriptionsByProductNameAndBrandName(String productName, String brandName)
-	{
+	public Set<String> getSizeDescriptionsByProductNameAndBrandName(String productName, String brandName) {
 		List<NameValuePair> queryParams = new ArrayList<NameValuePair>();
 		queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, productName));
 		queryParams.add(new BasicNameValuePair(BRAND_NAME_KEY, brandName));
@@ -52,8 +49,7 @@ public class ProductTableDataSource
 		return decodeSizeDescriptions(responseString);
 	}
 
-	public Set<String> getBrandNamesByProductName(String productName)
-	{
+	public Set<String> getBrandNamesByProductName(String productName) {
 		List<NameValuePair> queryParams = new ArrayList<NameValuePair>();
 		queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, productName));
 
@@ -62,8 +58,7 @@ public class ProductTableDataSource
 		return decodeBrandNames(responseString);
 	}
 	
-	public Set<String> getOuncesOrCountByProductNameBrandNameAndSizeDescription(String productName, String brandName, String sizeDescription)
-	{
+	public Set<String> getOuncesOrCountByProductNameBrandNameAndSizeDescription(String productName, String brandName, String sizeDescription) {
 		List<NameValuePair> queryParams = new ArrayList<NameValuePair>();
 		queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, productName));
 		queryParams.add(new BasicNameValuePair(BRAND_NAME_KEY, brandName));
@@ -74,50 +69,38 @@ public class ProductTableDataSource
 		return decodeOuncesOrCounts(responseString);
 	}
 
-	private JSONArray getResultArray(String json)
-	{
+	private JSONArray getResultArray(String json) {
 		JSONArray resultArray = null;
 
-		try
-		{
+		try {
 			JSONObject resultObject = new JSONObject(json);
 			String response = resultObject.getString("Response");
 			if(response.charAt(0) == 'K')
 				resultArray = resultObject.getJSONArray("Result");
-		}
-		catch(JSONException e)
-		{
+		} catch(JSONException e) {
 			Log.e(LOG_TAG, "JSONException: " + e.getMessage());
-		}
-		catch(Exception e)
-		{
+		} catch(Exception e) {
 			Log.e(LOG_TAG, "Exception: " + e.getMessage());
 		}
 
 		return resultArray;
 	}
 
-	private Set<String> decodeOuncesOrCounts(String json)
-	{
+	private Set<String> decodeOuncesOrCounts(String json) {
 		Set<String> resultSet = null;
 
 		JSONArray ouncesOrCountArray = getResultArray(json);
 	
-		if(ouncesOrCountArray != null)
-		{
+		if(ouncesOrCountArray != null) {
 			resultSet = new HashSet<String>();
 
-			try
-			{
-				for(int i = 0; i < ouncesOrCountArray.length(); ++i)
-				{
+			try {
+				for(int i = 0; i < ouncesOrCountArray.length(); ++i) {
 					JSONObject obj = ouncesOrCountArray.getJSONObject(i);
 					String ouncesOrCount= obj.getString("OuncesOrCount");
 					resultSet.add(ouncesOrCount);
 				}
-			}
-			catch(Exception e)
-			{
+			} catch(Exception e) {
 				Log.e(LOG_TAG, "Error: " + e.getMessage());
 			}
 		}
@@ -126,27 +109,21 @@ public class ProductTableDataSource
 
 	}
 
-	private Set<String> decodeBrandNames(String json)
-	{
+	private Set<String> decodeBrandNames(String json) {
 		Set<String> resultSet = null;
 
 		JSONArray brandNameArray = getResultArray(json);
 	
-		if(brandNameArray != null)
-		{
+		if(brandNameArray != null) {
 			resultSet = new HashSet<String>();
 
-			try
-			{
-				for(int i = 0; i < brandNameArray.length(); ++i)
-				{
+			try {
+				for(int i = 0; i < brandNameArray.length(); ++i) {
 					JSONObject obj = brandNameArray.getJSONObject(i);
 					String brandName= obj.getString("BrandName");
 					resultSet.add(brandName);
 				}
-			}
-			catch(Exception e)
-			{
+			} catch(Exception e) {
 				Log.e(LOG_TAG, "Error: " + e.getMessage());
 			}
 		}
@@ -155,50 +132,39 @@ public class ProductTableDataSource
 
 	}
 
-	private Set<String> decodeSizeDescriptions(String json)
-	{
+	private Set<String> decodeSizeDescriptions(String json) {
 		Set<String> resultSet = null;
 
 		JSONArray sizeDescriptionArray = getResultArray(json);
 	
-		if(sizeDescriptionArray != null)
-		{
+		if(sizeDescriptionArray != null) {
 			resultSet = new HashSet<String>();
 
-			try
-			{
-				for(int i = 0; i < sizeDescriptionArray.length(); ++i)
-				{
+			try {
+				for(int i = 0; i < sizeDescriptionArray.length(); ++i) {
 					JSONObject obj = sizeDescriptionArray.getJSONObject(i);
 					String sizeDescription = obj.getString("SizeDescription");
 					resultSet.add(sizeDescription);
 				}
-			}
-			catch(Exception e)
-			{
+			} catch(Exception e) {
 				Log.e(LOG_TAG, "Error: " + e.getMessage());
 			}
 		}
 
 		return resultSet;
-
 	}
 
-	private List<Product> decodeJSONProductList(String json)
-	{
+	private List<Product> decodeJSONProductList(String json) {
 		List<Product> result = null;
 
 		JSONArray productArray = getResultArray(json);
 
-		if(productArray != null)
-		{
+		if(productArray != null) {
 
 			result = new ArrayList<Product>();
 
-			try
-			{
-				for(int i = 0; i < productArray.length(); ++i)
-				{
+			try {
+				for(int i = 0; i < productArray.length(); ++i) {
 					JSONObject obj = productArray.getJSONObject(i);
 					int productId = obj.getInt("ProductId");
 					String productName = obj.getString("ProductName");
@@ -210,9 +176,7 @@ public class ProductTableDataSource
 
 					result.add(product);
 				}
-			}
-			catch(Exception e)
-			{
+			} catch(Exception e) {
 				Log.e(LOG_TAG, "Error: " + e.getMessage());
 			}
 		}

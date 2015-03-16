@@ -3,26 +3,22 @@ package com.wheretoshop.model;
 import java.math.BigDecimal;
 import java.io.Serializable;
 
-public class Product implements Serializable
-{
+public class Product implements Serializable {
 	private int productId;
 	private String productName;
 	private String brandName;
 	private String sizeDescription; 
 	private BigDecimal ouncesOrCount;
 
-	public Product(int productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription)
-	{
+	public Product(int productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription) {
 		init(productId, productName, brandName, ouncesOrCount, sizeDescription); 
 	}
 
-	public Product(int productId, String productName, BigDecimal ouncesOrCount, String sizeDescription)
-	{
+	public Product(int productId, String productName, BigDecimal ouncesOrCount, String sizeDescription) {
 		init(productId, productName, "", ouncesOrCount, sizeDescription);
 	}
 
-	private void init(int productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription)
-	{
+	private void init(int productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription) {
 		this.productId = productId;
 		this.productName = productName;
 		this.brandName = brandName;
