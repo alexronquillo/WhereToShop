@@ -1,21 +1,17 @@
-package com.wheretoshop.controller;
+package com.wheretoshop.controller.grocerylist;
 
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.InflateException;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.os.Bundle;
-import android.os.AsyncTask;
 import android.util.Log;
-import android.R.layout;
 import android.text.TextWatcher;
 import android.text.Editable;
 import android.content.Intent;
@@ -24,7 +20,6 @@ import java.util.Set;
 import java.math.BigDecimal;
 
 import com.wheretoshop.R;
-import com.wheretoshop.controller.GroceryListActivity;
 import com.wheretoshop.model.Product;
 import com.wheretoshop.model.ProductTableDataSource;
 import com.wheretoshop.model.ProductTableSingleColumnGetTask;
@@ -34,7 +29,7 @@ import com.wheretoshop.model.GroceryListProduct;
 
 public class GroceryListModifyFragment extends Fragment implements ModifiedProductHandler
 {
-	private static final String LOG_TAG = "GROCERY_LIST_MODIFY_FRAGMENT_LOG_TAG";
+	private static final String LOG_TAG = "GroceryList_LOG_TAG";
 	private EditText productNameEditText;
 	private Spinner brandNameSpinner;
 	private Spinner sizeDescriptionSpinner;
@@ -54,12 +49,10 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 		Bundle args = getArguments();
 		if(args != null) {
 			Product product;
-			if(args != null) {
-				if((product = (Product)args.getSerializable(GroceryListModifyActivity.PRODUCT_ARG_KEY)) != null)
-					this.product = product;
+            if((product = (Product)args.getSerializable(GroceryListModifyActivity.PRODUCT_ARG_KEY)) != null)
+                this.product = product;
 
-				addProduct = args.getBoolean(GroceryListActivity.ADD_MODIFY_FLAG_KEY);
-			}
+            addProduct = args.getBoolean(GroceryListActivity.ADD_MODIFY_FLAG_KEY);
 		}
 
 		grocerylist = GroceryList.getInstance(getActivity());
@@ -71,9 +64,9 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 		try {
 			inflatedView = inflater.inflate(R.layout.grocery_list_modify_fragment, container, false);
 
-			brandNameAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item);
-			sizeDescriptionAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item);
-			ouncesOrCountAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item);
+			brandNameAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item);
+			sizeDescriptionAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item);
+			ouncesOrCountAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item);
 
 			productNameEditText = (EditText)inflatedView.findViewById(R.id.product_name_edittext);
 			productNameEditText.addTextChangedListener(new TextWatcher() {
@@ -94,7 +87,7 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 			brandNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 				@Override
 				public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-					product.setBrandName((String)((Spinner)parent).getSelectedItem());
+					product.setBrandName((String)(parent).getSelectedItem());
 					executeSizeDescriptionGetTask();
 				}
 
@@ -107,7 +100,7 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 			sizeDescriptionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 				@Override
 				public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-					product.setSizeDescription((String)((Spinner)parent).getSelectedItem());
+					product.setSizeDescription((String)(parent).getSelectedItem());
 					executeOuncesOrCountGetTask();
 				}
 
@@ -120,7 +113,7 @@ public class GroceryListModifyFragment extends Fragment implements ModifiedProdu
 			ouncesOrCountSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 				@Override
 				public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-					product.setOuncesOrCount(new BigDecimal((String)((Spinner)parent).getSelectedItem()));
+					product.setOuncesOrCount(new BigDecimal((String)(parent).getSelectedItem()));
 				}
 
 				@Override

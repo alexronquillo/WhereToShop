@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity android:name=".controller.GroceryListActivity" />
-		<activity android:name=".controller.GroceryListModifyActivity" />
+		<activity android:name=".controller.grocerylist.GroceryListActivity" />
+		<activity android:name=".controller.grocerylist.GroceryListModifyActivity" />
     </application>
 </manifest>

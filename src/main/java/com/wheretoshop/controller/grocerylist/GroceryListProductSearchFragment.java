@@ -1,8 +1,6 @@
-package com.wheretoshop.controller;
+package com.wheretoshop.controller.grocerylist;
 
-import android.view.View;
-import android.widget.AdapterView;
-
+import com.wheretoshop.controller.ProductSearchFragment;
 import com.wheretoshop.model.FragmentSwitcher;
 import com.wheretoshop.model.Product;
 

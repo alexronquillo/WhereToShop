@@ -1,15 +1,13 @@
-package com.wheretoshop.controller;
+package com.wheretoshop.controller.grocerylist;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.content.Intent;
-import android.util.Log;
 
-import com.wheretoshop.R;
+import com.wheretoshop.controller.SearchSwitchFragmentActivity;
 import com.wheretoshop.model.Product;
 
 public class GroceryListModifyActivity extends SearchSwitchFragmentActivity {
-	private static final String LOG_TAG = "GroceryListModifyActivity_LOG_TAG";
 	public static final String PRODUCT_ARG_KEY = "PRODUCT_KEY";
 	private boolean addProduct = false;
 	private Product product = null;	
@@ -20,20 +18,15 @@ public class GroceryListModifyActivity extends SearchSwitchFragmentActivity {
 
 		Intent intent = getIntent();
 		if(intent != null) {
-			Boolean addProduct = intent.getBooleanExtra(GroceryListActivity.ADD_MODIFY_FLAG_KEY, false);
-			this.addProduct = addProduct;
+			addProduct = intent.getBooleanExtra(GroceryListActivity.ADD_MODIFY_FLAG_KEY, false);
 		}
 	}
 
 	public void setProduct(Product product) { this.product = product; }
 
-	public void setAddProductFlag(boolean flag) { this.addProduct = flag; }
-
-	public boolean isAddProduct() { return addProduct; }
-
 	@Override
 	protected Fragment getFragment(boolean isSearch) {
-		Fragment fragment = null;
+		Fragment fragment;
 		if(isSearch) {
 			fragment = new GroceryListProductSearchFragment();
 		} else {

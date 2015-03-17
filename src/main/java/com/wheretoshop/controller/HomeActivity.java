@@ -8,6 +8,7 @@ import android.content.ActivityNotFoundException;
 import android.util.Log;
 
 import com.wheretoshop.R;
+import com.wheretoshop.controller.grocerylist.GroceryListActivity;
 
 public class HomeActivity extends ActionBarActivity {
 	private final static String HOME_ACTIVITY_LOG_TAG = "HOME_ACTIVITY_LOG_TAG";

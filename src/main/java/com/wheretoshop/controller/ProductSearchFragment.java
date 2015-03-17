@@ -7,17 +7,13 @@ import android.view.ViewGroup;
 import android.view.InflateException;
 import android.widget.SearchView;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.os.Bundle;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.app.ProgressDialog;
-import android.content.Context;
 
 import java.util.List;
 import java.util.ArrayList;
-import junit.framework.Assert;
 
 import com.wheretoshop.R;
 import com.wheretoshop.model.SearchListArrayAdapter;
@@ -98,7 +94,6 @@ public abstract class ProductSearchFragment extends Fragment implements SearchTa
 	public void handleSearchTask(List<Product> products) { replaceSearchList(products); }
 
 	class SearchTask extends AsyncTask<String, String, List<Product>> {
-		private List<Product> products;
 		private SearchTaskHandler handler;
 
 		public SearchTask(SearchTaskHandler handler) { this.handler = handler; }

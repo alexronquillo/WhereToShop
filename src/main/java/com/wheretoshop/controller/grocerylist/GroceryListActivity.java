@@ -1,4 +1,4 @@
-package com.wheretoshop.controller;
+package com.wheretoshop.controller.grocerylist;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -17,11 +17,9 @@ import com.wheretoshop.model.GroceryListAdapter;
 
 public class GroceryListActivity extends ActionBarActivity
 {
-	private static final String LOG_TAG = "GroceryListActivity_LOG_TAG";
 	public static final String GROCERY_LIST_TAG = "GROCERY_LIST_TAG";
 	public static final String ADD_MODIFY_FLAG_KEY = "ADD_MODIFY_FLAG_KEY";
 	public static final Boolean ADD_PRODUCT_FLAG = true;
-	public static final Boolean MODIFY_PRODUCT_FLAG = false;
 	private GroceryListAdapter adapter;
 	private ListView listView;
 	private GroceryList grocerylist;
