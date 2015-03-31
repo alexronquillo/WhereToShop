@@ -21,7 +21,7 @@ public class HomeActivity extends ActionBarActivity {
 
 	public void openGroceryList(View view) {
 		try {
-			Intent intent = new Intent(getApplicationContext(), GroceryListActivity.class);
+			Intent intent = new Intent(this, GroceryListActivity.class);
 			startActivity(intent);
 		}
 		catch(ActivityNotFoundException e) {

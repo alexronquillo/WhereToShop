@@ -1,4 +1,4 @@
-package com.wheretoshop.model;
+package com.wheretoshop.model.adapters;
 
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
@@ -10,12 +10,13 @@ import android.content.Context;
 import java.util.List;
 
 import com.wheretoshop.R;
+import com.wheretoshop.model.Product;
 
-public class SearchListArrayAdapter extends ArrayAdapter {
-	private static final String LOG_TAG = "PRODUCT_ARRAY_ADAPTER_LOG_TAG";
+public class ProductArrayAdapter extends ArrayAdapter {
+	private static final String LOG_TAG = "SearchListAdapter";
 	private int layoutResID = R.layout.search_list_item;
 
-	public SearchListArrayAdapter(Context context, List<Product> objects) { super(context, R.layout.search_list_item, objects); }
+	public ProductArrayAdapter(Context context, List<Product> objects) { super(context, R.layout.search_list_item, objects); }
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {

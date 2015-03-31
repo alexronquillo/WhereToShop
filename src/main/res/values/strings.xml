@@ -15,4 +15,5 @@
 	<string name="quantity_button_text">Quantity</string>
 	<string name="submit_button_text">Submit</string>
     <string name="search_hint">Product Name/Brand Name</string>
+    <string name="grocery_list_submit_toast">A product has been added to your grocery list.</string>
 </resources>

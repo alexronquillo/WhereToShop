@@ -1,4 +1,4 @@
-package com.wheretoshop.model;
+package com.wheretoshop.model.adapters;
 
 import android.widget.ArrayAdapter;
 import android.view.View;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import com.wheretoshop.R;
+import com.wheretoshop.model.GroceryListProduct;
+import com.wheretoshop.model.Product;
 
 public class GroceryListAdapter extends ArrayAdapter {
 	private int layoutResId;

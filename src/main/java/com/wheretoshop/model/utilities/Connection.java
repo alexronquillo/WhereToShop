@@ -1,4 +1,4 @@
-package com.wheretoshop.model;
+package com.wheretoshop.model.utilities;
 
 import android.util.Log;
 import android.widget.Toast;
