@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wheretoshop.R;
-import com.wheretoshop.controller.grocerylist.GroceryListActivity;
 import com.wheretoshop.model.GroceryList;
 import com.wheretoshop.model.GroceryListProduct;
 import com.wheretoshop.model.Product;
