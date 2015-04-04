@@ -16,7 +16,7 @@ import com.wheretoshop.model.Product;
 
 public class ViewProductActivity extends Activity {
     private static final Integer DEFAULT_QUANTITY = 1;
-    private Product product;
+    private Product product = null;
     private TextView productNameTextView;
     private TextView brandNameTextView;
     private TextView sizeDescriptionTextView;
@@ -47,16 +47,13 @@ public class ViewProductActivity extends Activity {
             public void onClick(View v) {
                 if (product != null) {
                     GroceryList groceryList = GroceryList.getInstance(ViewProductActivity.this);
-                    groceryList.add(new GroceryListProduct(getProduct(), DEFAULT_QUANTITY));
+                    groceryList.add(new GroceryListProduct(product, DEFAULT_QUANTITY));
                     startGroceryListActivity();
                 }
             }
         });
     }
 
-    private Product getProduct() {
-        return product;
-    }
     private void startGroceryListActivity() {
         Intent intent = new Intent(this, GroceryListActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);

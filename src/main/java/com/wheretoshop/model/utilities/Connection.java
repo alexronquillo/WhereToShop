@@ -24,7 +24,6 @@ public class Connection {
 
     private static final String LOG_TAG = "DB_CONNECTION_LOG_TAG";
 	private static final String ENCODING = "utf-8";
-	private static final int MAX_BYTES = 1024;
 	private static final String URL = "http://73.54.203.186:9704";
 
     public Connection() { }

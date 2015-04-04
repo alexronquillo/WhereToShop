@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 import android.util.Log;
 
 import com.wheretoshop.model.Product;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
