@@ -13,6 +13,9 @@
 	<string name="size_description_hint">Size Description</string>
 	<string name="ounces_or_count_hint">Ounces/Count</string>
 	<string name="quantity_button_text">Quantity</string>
+	<string name="general_price_hint">General Price</string>
+	<string name="zip_code_hint">Zip Code</string>
+	<string name="store_name_hint">Store Name</string>
 	<string name="submit_button_text">Submit</string>
     <string name="search_hint">Product Name/Brand Name</string>
     <string name="grocery_list_submit_toast">A product has been added to your grocery list.</string>
