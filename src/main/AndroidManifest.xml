@@ -17,7 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.grocerylist.GroceryListActivity">
+        <activity android:name=".controller.GroceryListActivity">
+            <meta-data android:name="android.app.default_searchable"
+                android:value=".controller.ProductSearchActivity"
+                />
+        </activity>
+        <activity android:name=".controller.PriceContributorActivity">
             <meta-data android:name="android.app.default_searchable"
                 android:value=".controller.ProductSearchActivity"
                 />
