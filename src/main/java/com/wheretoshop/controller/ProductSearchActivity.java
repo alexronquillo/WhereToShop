@@ -87,7 +87,7 @@ public class ProductSearchActivity extends ActionBarActivity implements ProductS
     @Override
     public void handleProductSearchResult(List<Product> products) {
         if (productAdapter != null) {
-            if (products == null) {
+            if (products != null) {
                 productAdapter.clear();
                 productAdapter.addAll(products);
                 productAdapter.notifyDataSetChanged();
