@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	>
+	
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		>
+
+		<LinearLayout
+			android:id="@+id/pc_layout"
+			android:layout_centerInParent="true"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:orientation="vertical"
+			>
+
+			<EditText
+				android:id="@+id/pc_product_name_edit_text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/product_name_hint"
+				android:singleLine="true"
+				/>
+			
+			<EditText
+				android:id="@+id/pc_brand_name_edit_text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/brand_name_hint"
+				android:singleLine="true"
+				/>
+
+			<EditText
+				android:id="@+id/pc_size_description_edit_text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/size_description_hint"
+				android:singleLine="true"
+				/>
+			
+			<EditText
+				android:id="@+id/pc_ounces_or_count_edit_text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/ounces_or_count_hint"
+				android:singleLine="true"
+				android:inputType="numberDecimal"
+				/>
+			
+			<EditText
+				android:id="@+id/pc_store_name_edit_text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/store_name_hint"
+				android:singleLine="true"
+				/>
+			
+			<EditText
+				android:id="@+id/pc_zip_code_edit_text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/zip_code_hint"
+				android:singleLine="true"
+				android:inputType="number"
+				/>
+
+			<EditText
+				android:id="@+id/pc_general_price_edit_text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/general_price_hint"
+				android:singleLine="true"
+				android:imeOptions="actionDone"
+				android:inputType="numberDecimal"
+				/>
+				
+			<Button
+				android:id="@+id/pc_submit_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal"
+				android:text="@string/submit_button_text"
+				/>
+		
+		</LinearLayout>
+
+	</ScrollView>
+
+</RelativeLayout>
+
