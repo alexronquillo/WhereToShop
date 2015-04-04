@@ -8,7 +8,6 @@ import android.content.ActivityNotFoundException;
 import android.util.Log;
 
 import com.wheretoshop.R;
-import com.wheretoshop.controller.grocerylist.GroceryListActivity;
 
 public class HomeActivity extends ActionBarActivity {
 	private final static String HOME_ACTIVITY_LOG_TAG = "HOME_ACTIVITY_LOG_TAG";
@@ -23,8 +22,16 @@ public class HomeActivity extends ActionBarActivity {
 		try {
 			Intent intent = new Intent(this, GroceryListActivity.class);
 			startActivity(intent);
+		} catch(ActivityNotFoundException e) {
+			Log.e(HOME_ACTIVITY_LOG_TAG, e.getMessage());
 		}
-		catch(ActivityNotFoundException e) {
+	}
+
+	public void openPriceContributor(View view) {
+		try {
+			Intent intent = new Intent(this, PriceContributorActivity.class);
+			startActivity(intent);
+		} catch (ActivityNotFoundException e) {
 			Log.e(HOME_ACTIVITY_LOG_TAG, e.getMessage());
 		}
 	}
