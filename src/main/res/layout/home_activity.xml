@@ -28,6 +28,7 @@
 	android:layout_height="wrap_content"
 	android:layout_gravity="center"
 	android:text="@string/contributor_button_text"
+	android:onClick="openPriceContributor"
 	/>
 
 </LinearLayout>
