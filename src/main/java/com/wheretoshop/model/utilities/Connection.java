@@ -29,7 +29,6 @@ public class Connection {
     public Connection() { }
 
     public String post(String path, List<NameValuePair> params) {
-
         try {
             HttpClient httpClient = new DefaultHttpClient();
 

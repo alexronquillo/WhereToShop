@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import android.util.Log;
 
 import com.wheretoshop.model.Product;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -20,7 +21,7 @@ public class ProductTableDataSource {
 	private static final String LOG_TAG = "ProductTableDS";
 
 	public List<Product> getProductsByProductOrBrandName(String productOrBrandName) {
-		List<NameValuePair> queryParams = new ArrayList<>();
+		List<NameValuePair> queryParams = new ArrayList<NameValuePair>();
 		queryParams.add(new BasicNameValuePair(PRODUCT_OR_BRAND_NAME_KEY, productOrBrandName));
 
 		String responseString = new Connection().get(GET_PRODUCTS_BY_PRODUCT_OR_BRAND_NAME_PATH, queryParams);
@@ -52,7 +53,7 @@ public class ProductTableDataSource {
 
 		if(productArray != null) {
 
-			result = new ArrayList<>();
+			result = new ArrayList<Product>();
 
 			try {
 				for(int i = 0; i < productArray.length(); ++i) {
