@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WhereToShop</string>
+	<string name="grocery_list_button_text">Grocery List</string>
+	<string name="wts_button_text">Where to Shop</string>
+	<string name="contributor_button_text">Contribute!</string>
+	<string name="action_bar_add_text">Add</string>
+	<string name="action_bar_remove_text">Remove</string>
+	<string name="switch_search_text">Search</string>
+	<string name="switch_manual_text">Manual Entry</string>
+	<string name="product_name_hint">Product Name</string>
+	<string name="brand_name_hint">Brand Name</string>
+	<string name="size_description_hint">Size Description</string>
+	<string name="ounces_or_count_hint">Ounces/Count</string>
+	<string name="quantity_button_text">Quantity</string>
+	<string name="general_price_hint">General Price</string>
+	<string name="zip_code_hint">Zip Code</string>
+	<string name="store_name_hint">Store Name</string>
+	<string name="submit_button_text">Submit</string>
+    <string name="product_brand_search_hint">Product Name/Brand Name</string>
+    <string name="grocery_list_submit_toast">A product has been added to your grocery list.</string>
+</resources>

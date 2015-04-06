@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:WhereToShop="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/search"
+        android:title="@string/switch_search_text"
+        WhereToShop:showAsAction="collapseActionView|ifRoom"
+        WhereToShop:actionViewClass="android.support.v7.widget.SearchView"
+        />
+
+    <item android:id="@+id/remove"
+        android:title="@string/action_bar_remove_text"
+        WhereToShop:showAsAction="ifRoom"
+        />
+
+</menu>
+
