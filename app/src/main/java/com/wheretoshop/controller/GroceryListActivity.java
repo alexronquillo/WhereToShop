@@ -1,6 +1,7 @@
 package com.wheretoshop.controller;
 
 import android.app.SearchManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -60,17 +61,16 @@ public class GroceryListActivity extends ActionBarActivity
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
             SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+            ComponentName searchableComponentName = new ComponentName(this, ProductSearchActivity.class);
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(searchableComponentName));
             searchView.setIconifiedByDefault(false);
-        } else {
-            Log.i(LOG_TAG, "Sdk: " + Build.VERSION.SDK_INT);
         }
 
         return true;
     }
 
     private void removeCheckedItems() {
-        for (int i = 0; i < listView.getChildCount(); ++i) {
+        for (int i = listView.getChildCount() - 1; i >= 0; --i) {
             View child = listView.getChildAt(i);
             CheckBox checkbox = (CheckBox) child.findViewById(R.id.gl_product_checkbox);
             if (checkbox.isChecked()) {
