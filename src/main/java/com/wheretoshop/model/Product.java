@@ -4,21 +4,17 @@ import java.math.BigDecimal;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-	private int productId;
+	private long productId;
 	private String productName;
 	private String brandName;
 	private String sizeDescription; 
 	private BigDecimal ouncesOrCount;
 
-	public Product(int productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription) {
+	public Product(long productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription) {
 		init(productId, productName, brandName, ouncesOrCount, sizeDescription); 
 	}
 
-	public Product(int productId, String productName, BigDecimal ouncesOrCount, String sizeDescription) {
-		init(productId, productName, "", ouncesOrCount, sizeDescription);
-	}
-
-	private void init(int productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription) {
+	private void init(long productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription) {
 		this.productId = productId;
 		this.productName = productName;
 		this.brandName = brandName;
@@ -26,7 +22,7 @@ public class Product implements Serializable {
 		this.ouncesOrCount = ouncesOrCount;
 	}
 
-	public int getProductId() { return productId; }
+	public long getProductId() { return productId; }
 	public String getProductName() { return productName; }
 	public String getBrandName() { return brandName; }
 	public String getSizeDescription() { return sizeDescription; }
