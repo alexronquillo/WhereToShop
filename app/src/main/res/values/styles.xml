@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style
+        name="WTS_ActionBar"
+        parent="@style/Theme.AppCompat.Light"
+        >
+        <item name="android:logo">@drawable/ic_launcher</item>
+    </style>
 </resources>
