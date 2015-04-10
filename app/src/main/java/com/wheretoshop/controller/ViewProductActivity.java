@@ -14,7 +14,8 @@ import com.wheretoshop.model.GroceryList;
 import com.wheretoshop.model.GroceryListProduct;
 import com.wheretoshop.model.Product;
 
-public class ViewProductActivity extends Activity {
+public class ViewProductActivity extends Activity
+{
     private static final Integer DEFAULT_QUANTITY = 1;
     private Product product = null;
     private TextView productNameTextView;
@@ -24,7 +25,8 @@ public class ViewProductActivity extends Activity {
     private Button submitButton;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_activity);
 
@@ -33,8 +35,9 @@ public class ViewProductActivity extends Activity {
         sizeDescriptionTextView = (TextView) findViewById(R.id.size_description_textview);
         ouncesOrCountTextView = (TextView) findViewById(R.id.ounces_count_textview);
 
-        if (getIntent().hasExtra(ProductSearchActivity.PRODUCT_EXTRA)) {
-            product = (Product)getIntent().getSerializableExtra(ProductSearchActivity.PRODUCT_EXTRA);
+        if (getIntent().hasExtra(ProductSearchActivity.PRODUCT_EXTRA))
+        {
+            product = (Product) getIntent().getSerializableExtra(ProductSearchActivity.PRODUCT_EXTRA);
             productNameTextView.setText(product.getProductName());
             brandNameTextView.setText(product.getBrandName());
             sizeDescriptionTextView.setText(product.getSizeDescription());
@@ -45,8 +48,9 @@ public class ViewProductActivity extends Activity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (product != null) {
-                    GroceryList groceryList = GroceryList.getInstance(ViewProductActivity.this);
+                if (product != null)
+                {
+                    GroceryList groceryList = GroceryList.getInstance();
                     groceryList.add(new GroceryListProduct(product, DEFAULT_QUANTITY));
                     startGroceryListActivity();
                 }
@@ -54,7 +58,8 @@ public class ViewProductActivity extends Activity {
         });
     }
 
-    private void startGroceryListActivity() {
+    private void startGroceryListActivity()
+    {
         Intent intent = new Intent(this, GroceryListActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

@@ -8,7 +8,8 @@ import com.wheretoshop.R;
 public class PriceContributorActivity extends ActionBarActivity
 {
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+    {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.price_contributor_activity);
 	}

@@ -26,14 +26,16 @@ import com.wheretoshop.model.utilities.ProductTableDataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductSearchActivity extends ActionBarActivity implements ProductSearchHandler {
+public class ProductSearchActivity extends ActionBarActivity implements ProductSearchHandler
+{
     private static final String LOG_TAG = "ProductSearchActivity";
     public static final String PRODUCT_EXTRA = "ProductExtra";
     private ListView productListView;
     private ProductArrayAdapter productAdapter;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity);
 
@@ -43,12 +45,15 @@ public class ProductSearchActivity extends ActionBarActivity implements ProductS
         productListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                try {
+                try
+                {
                     Product product = (Product) parent.getItemAtPosition(position);
                     Intent intent = new Intent(ProductSearchActivity.this, ViewProductActivity.class);
                     intent.putExtra(PRODUCT_EXTRA, product);
                     startActivity(intent);
-                } catch (ClassCastException e) {
+                }
+                catch (ClassCastException e)
+                {
                     Log.e(LOG_TAG, "ClassCastException: " + e.getMessage());
                 }
             }
@@ -58,58 +63,70 @@ public class ProductSearchActivity extends ActionBarActivity implements ProductS
     }
 
     @Override
-    public void onNewIntent(Intent intent) {
+    public void onNewIntent(Intent intent)
+    {
         handleSearchIntent(intent);
     }
 
-    private void handleSearchIntent(Intent intent) {
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+    private void handleSearchIntent(Intent intent)
+    {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction()))
+        {
             String query = intent.getStringExtra(SearchManager.QUERY);
             new ProductSearchTask(this).execute(query);
         }
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.product_search_menu, menu);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            MenuItem searchMenuItem = menu.findItem(R.id.search);
-            SearchView searchView = (SearchView) searchMenuItem.getActionView();
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-            searchView.setIconifiedByDefault(false);
-        }
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        MenuItem searchMenuItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setIconifiedByDefault(false);
 
         return true;
     }
 
     @Override
-    public void handleProductSearchResult(List<Product> products) {
-        if (productAdapter != null) {
-            if (products != null) {
+    public void handleProductSearchResult(List<Product> products)
+    {
+        if (productAdapter != null)
+        {
+            if (products != null)
+            {
                 productAdapter.clear();
                 productAdapter.addAll(products);
                 productAdapter.notifyDataSetChanged();
-            } else {
+            }
+            else
+            {
                 Log.e(LOG_TAG, "No products from search results.");
             }
-        } else {
+        }
+        else
+        {
             Log.e(LOG_TAG, "Error: productAdapter is null in handleProductSearchResult(List)");
         }
     }
 
-    class ProductSearchTask extends AsyncTask<String, String, List<Product>> {
+    class ProductSearchTask extends AsyncTask<String, String, List<Product>>
+    {
         private ProductSearchHandler handler;
         private ProgressDialog progressDialog;
 
-        public ProductSearchTask(ProductSearchHandler handler) {
+        public ProductSearchTask(ProductSearchHandler handler)
+        {
             this.handler = handler;
         }
 
         @Override
-        protected void onPreExecute() {
+        protected void onPreExecute()
+        {
             super.onPreExecute();
             progressDialog = new ProgressDialog(ProductSearchActivity.this);
             progressDialog.setMessage("Searching for products...");
@@ -119,8 +136,10 @@ public class ProductSearchActivity extends ActionBarActivity implements ProductS
         }
 
         @Override
-        protected List<Product> doInBackground(String... args) {
-            if (args.length == 1) {
+        protected List<Product> doInBackground(String... args)
+        {
+            if (args.length == 1)
+            {
                 ProductTableDataSource ds = new ProductTableDataSource();
                 return ds.getProductsByProductOrBrandName(args[0]);
             }
@@ -129,8 +148,10 @@ public class ProductSearchActivity extends ActionBarActivity implements ProductS
         }
 
         @Override
-        protected void onPostExecute(List<Product> products) {
-            if (handler != null) {
+        protected void onPostExecute(List<Product> products)
+        {
+            if (handler != null)
+            {
                 handler.handleProductSearchResult(products);
             }
 

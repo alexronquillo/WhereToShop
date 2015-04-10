@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style
-        name="WTS_ActionBar"
-        parent="@style/Theme.AppCompat.Light"
-        >
-        <item name="android:logo">@drawable/ic_launcher</item>
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/green</item>
+        <item name="background">@color/green</item>
+    </style>
+
+    <style name="WTS_ActionBar" parent="@style/Theme.AppCompat.Light">
+        <item name="android:actionBarStyle"   >@style/MyActionBar</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
+
     </style>
 </resources>

@@ -9,29 +9,39 @@ import android.util.Log;
 
 import com.wheretoshop.R;
 
-public class HomeActivity extends ActionBarActivity {
+public class HomeActivity extends ActionBarActivity
+{
 	private final static String HOME_ACTIVITY_LOG_TAG = "HOME_ACTIVITY_LOG_TAG";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
 	}
 
-	public void openGroceryList(View view) {
-		try {
+	public void openGroceryList(View view)
+    {
+		try
+        {
 			Intent intent = new Intent(this, GroceryListActivity.class);
 			startActivity(intent);
-		} catch(ActivityNotFoundException e) {
+		}
+        catch(ActivityNotFoundException e)
+        {
 			Log.e(HOME_ACTIVITY_LOG_TAG, e.getMessage());
 		}
 	}
 
-	public void openPriceContributor(View view) {
-		try {
+	public void openPriceContributor(View view)
+    {
+		try
+        {
 			Intent intent = new Intent(this, PriceContributorActivity.class);
 			startActivity(intent);
-		} catch (ActivityNotFoundException e) {
+		}
+        catch (ActivityNotFoundException e)
+        {
 			Log.e(HOME_ACTIVITY_LOG_TAG, e.getMessage());
 		}
 	}
