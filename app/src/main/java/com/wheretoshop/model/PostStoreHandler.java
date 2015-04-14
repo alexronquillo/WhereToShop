@@ -1,0 +1,9 @@
+package com.wheretoshop.model;
+
+/**
+ * Created by arr on 4/14/15.
+ */
+public interface PostStoreHandler
+{
+    public void handlePostStore(int storeId);
+}

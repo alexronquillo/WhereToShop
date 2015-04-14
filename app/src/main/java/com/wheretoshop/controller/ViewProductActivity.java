@@ -14,6 +14,8 @@ import com.wheretoshop.model.GroceryList;
 import com.wheretoshop.model.GroceryListProduct;
 import com.wheretoshop.model.Product;
 
+import java.math.BigDecimal;
+
 public class ViewProductActivity extends Activity
 {
     private static final Integer DEFAULT_QUANTITY = 1;
@@ -22,7 +24,8 @@ public class ViewProductActivity extends Activity
     private TextView brandNameTextView;
     private TextView sizeDescriptionTextView;
     private TextView ouncesOrCountTextView;
-    private Button submitButton;
+    private Button addButton;
+    private Button contributeButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -44,8 +47,8 @@ public class ViewProductActivity extends Activity
             ouncesOrCountTextView.setText(product.getOuncesOrCount().toString());
         }
 
-        submitButton = (Button) findViewById(R.id.submit_button);
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        addButton = (Button) findViewById(R.id.add_button);
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (product != null)
@@ -56,6 +59,16 @@ public class ViewProductActivity extends Activity
                 }
             }
         });
+
+        contributeButton = (Button) findViewById(R.id.contribute_button);
+        contributeButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                contributeProduct();
+            }
+        });
     }
 
     private void startGroceryListActivity()
@@ -63,5 +76,20 @@ public class ViewProductActivity extends Activity
         Intent intent = new Intent(this, GroceryListActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    private void contributeProduct()
+    {
+        try
+        {
+            Product product = new Product(-1, productNameTextView.getText().toString(), brandNameTextView.getText().toString(), new BigDecimal(ouncesOrCountTextView.getText().toString()), sizeDescriptionTextView.getText().toString());
+            Intent intent = new Intent(this, PriceContributorActivity.class);
+            intent.putExtra("PRODUCT_EXTRA", product);
+            startActivity(intent);
+        }
+        catch (Exception e)
+        {
+            Log.e("ViewProduct", "Exception: " + e.getMessage() + "\n\nStackTrace: " + e.getStackTrace());
+        }
     }
 }

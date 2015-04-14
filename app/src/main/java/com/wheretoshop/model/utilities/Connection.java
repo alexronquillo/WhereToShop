@@ -50,7 +50,7 @@ public class Connection {
 			for(NameValuePair pair : params)
 				uriBuilder.appendQueryParameter(pair.getName(), pair.getValue());
 
-			String getUri = uriBuilder.build().toString(); 
+			String getUri = uriBuilder.build().toString();
 
             HttpClient httpClient = new DefaultHttpClient();
           	HttpGet httpGet = new HttpGet(getUri);
@@ -67,7 +67,8 @@ public class Connection {
 	}
 
 	private String decodeResponse(HttpResponse response) {
-		try {
+		try
+        {
 			HttpEntity httpEntity = response.getEntity();
 			InputStream inputStream = httpEntity.getContent();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, ENCODING), 8);
@@ -79,10 +80,10 @@ public class Connection {
 			inputStream.close();
 
 			return stringBuilder.toString();
-		} catch(ConnectException e) {
+		} catch (ConnectException e) {
             Log.e(LOG_TAG, "ConnectException: " + e.getMessage());
 			return null;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			Log.e(LOG_TAG, e.getMessage());
 			return null;
 		}

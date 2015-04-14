@@ -3,7 +3,9 @@ package com.wheretoshop.controller;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
@@ -29,6 +31,8 @@ public class GroceryListActivity extends ActionBarActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_activity);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 		grocerylist = GroceryList.getInstance();
 		adapter = new GroceryListAdapter(this, grocerylist.getGroceryList());
 
@@ -43,6 +47,9 @@ public class GroceryListActivity extends ActionBarActivity
         {
             case R.id.remove:
                 removeCheckedItems();
+                return true;
+            case android.R.id.home:
+                NavUtils.navigateUpTo(this, new Intent(this, HomeActivity.class));
                 return true;
         }
 

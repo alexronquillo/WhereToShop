@@ -13,33 +13,110 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
 
-public class ProductTableDataSource {
+public class ProductTableDataSource
+{
 	private static final String GET_PRODUCTS_BY_PRODUCT_OR_BRAND_NAME_PATH = 
 		"/cgi-bin/get_products_by_product_or_brand_name.py";
-
-	private static final String PRODUCT_OR_BRAND_NAME_KEY = "product_or_brand_name";
+    private static final String GET_PRODUCT_ID_PATH =
+        "/cgi-bin/get_product_id.py";
+    private static final String INSERT_PRODUCT_PATH =
+            "/cgi-bin/insert_product.py";
+    private static final String PRODUCT_OR_BRAND_NAME_KEY = "product_or_brand_name";
+    private static final String PRODUCT_NAME_KEY = "product_name";
+    private static final String BRAND_NAME_KEY = "brand_name";
+    private static final String SIZE_DESCRIPTION_KEY = "size_description";
+    private static final String OUNCES_OR_COUNT_KEY = "ounces_or_count";
 	private static final String LOG_TAG = "ProductTableDS";
 
-	public List<Product> getProductsByProductOrBrandName(String productOrBrandName) {
-		List<NameValuePair> queryParams = new ArrayList<NameValuePair>();
-		queryParams.add(new BasicNameValuePair(PRODUCT_OR_BRAND_NAME_KEY, productOrBrandName));
+    public int postProduct(String productName, String brandName, String sizeDescription, String ouncesOrCount)
+    {
+        List<NameValuePair> queryParams = new ArrayList<>();
+        queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, productName));
+        queryParams.add(new BasicNameValuePair(BRAND_NAME_KEY, brandName));
+        queryParams.add(new BasicNameValuePair(SIZE_DESCRIPTION_KEY, sizeDescription));
+        queryParams.add(new BasicNameValuePair(OUNCES_OR_COUNT_KEY, ouncesOrCount));
 
-		String responseString = new Connection().get(GET_PRODUCTS_BY_PRODUCT_OR_BRAND_NAME_PATH, queryParams);
+        String responseString = new Connection().get(INSERT_PRODUCT_PATH, queryParams);
 
-		return decodeJSONProductList(responseString);
-	}
+        int productId = -1;
+        try
+        {
+            JSONObject resultObject = new JSONObject(responseString);
+            String response = resultObject.getString("Response");
 
-	private JSONArray getResultArray(String json) {
+            if (response.charAt(0) == 'K')
+            {
+                productId = resultObject.getInt("Result");
+            }
+            else
+            {
+                Log.e("ProductTableDataSource", "Exception: " + resultObject.getString("Result"));
+            }
+        }
+        catch (JSONException e)
+        {
+            Log.e("ProductTableDataSource", "Exception: " + e.getMessage() + "\n\nStackTrace: " + e.getStackTrace());
+        }
+
+        return productId;
+    }
+
+    public List<Product> getProductsByProductOrBrandName(String productOrBrandName)
+    {
+        List<NameValuePair> queryParams = new ArrayList<>();
+        queryParams.add(new BasicNameValuePair(PRODUCT_OR_BRAND_NAME_KEY, productOrBrandName));
+
+        String responseString = new Connection().get(GET_PRODUCTS_BY_PRODUCT_OR_BRAND_NAME_PATH, queryParams);
+
+        return decodeJSONProductList(responseString);
+    }
+
+    public int getProductId(String productName, String brandName, String sizeDescription, String ouncesOrCount)
+    {
+        List<NameValuePair> queryParams = new ArrayList<>();
+        queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, productName));
+        queryParams.add(new BasicNameValuePair(BRAND_NAME_KEY, brandName));
+        queryParams.add(new BasicNameValuePair(SIZE_DESCRIPTION_KEY, sizeDescription));
+        queryParams.add(new BasicNameValuePair(OUNCES_OR_COUNT_KEY, ouncesOrCount));
+
+        String responseString = new Connection().get(GET_PRODUCT_ID_PATH, queryParams);
+
+        int productId = -1;
+        try
+        {
+            JSONObject resultObject = new JSONObject(responseString);
+            String response = resultObject.getString("Response");
+
+            if (response.charAt(0) == 'K')
+            {
+                productId = resultObject.getInt("Result");
+            }
+            else
+            {
+                Log.e("ProductTableDataSource", "Exception: " + resultObject.getString("Result"));
+            }
+        }
+        catch (JSONException e)
+        {
+            Log.e("ProductTableDataSource", "Exception: " + e.getMessage() + "\n\nStackTrace: " + e.getStackTrace());
+        }
+
+        return productId;
+    }
+
+	private JSONArray getResultArray(String json)
+    {
 		JSONArray resultArray = null;
 
-		try {
+		try
+        {
 			JSONObject resultObject = new JSONObject(json);
 			String response = resultObject.getString("Response");
 			if(response.charAt(0) == 'K')
 				resultArray = resultObject.getJSONArray("Result");
-		} catch(JSONException e) {
+		} catch (JSONException e) {
 			Log.e(LOG_TAG, "JSONException: " + e.getMessage());
-		} catch(Exception e) {
+		} catch (Exception e) {
 			Log.e(LOG_TAG, "Exception: " + e.getMessage());
 		}
 
@@ -56,7 +133,8 @@ public class ProductTableDataSource {
 			result = new ArrayList<Product>();
 
 			try {
-				for(int i = 0; i < productArray.length(); ++i) {
+				for (int i = 0; i < productArray.length(); ++i)
+                {
 					JSONObject obj = productArray.getJSONObject(i);
 					int productId = obj.getInt("ProductId");
 					String productName = obj.getString("ProductName");
@@ -68,7 +146,7 @@ public class ProductTableDataSource {
 
 					result.add(product);
 				}
-			} catch(Exception e) {
+			} catch (Exception e) {
 				Log.e(LOG_TAG, "Error: " + e.getMessage());
 			}
 		}
