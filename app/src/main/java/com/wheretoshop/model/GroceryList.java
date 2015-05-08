@@ -31,7 +31,7 @@ public class GroceryList
 		List<GroceryListProduct> groceryList = new ArrayList<>();
 		for (GroceryListProduct product : this.groceryList)
         {
-            groceryList.add(product);
+            groceryList.add(new GroceryListProduct(product));
         }
 
 		return groceryList; 

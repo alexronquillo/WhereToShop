@@ -17,8 +17,6 @@ public class ProductTableDataSource
 {
 	private static final String GET_PRODUCTS_BY_PRODUCT_OR_BRAND_NAME_PATH = 
 		"/cgi-bin/get_products_by_product_or_brand_name.py";
-    private static final String GET_PRODUCT_ID_PATH =
-        "/cgi-bin/get_product_id.py";
     private static final String INSERT_PRODUCT_PATH =
             "/cgi-bin/insert_product.py";
     private static final String PRODUCT_OR_BRAND_NAME_KEY = "product_or_brand_name";
@@ -50,12 +48,17 @@ public class ProductTableDataSource
             }
             else
             {
-                Log.e("ProductTableDataSource", "Exception: " + resultObject.getString("Result"));
+                Log.e("ProductTableDS", "Exception: " + resultObject.getString("Result"));
             }
         }
         catch (JSONException e)
         {
-            Log.e("ProductTableDataSource", "Exception: " + e.getMessage() + "\n\nStackTrace: " + e.getStackTrace());
+            Log.e("ProductTableDS", "Exception: " + e.getMessage() + "\n\nStackTrace: " + e.getStackTrace());
+        }
+
+        if (productId == -1)
+        {
+            Log.e(LOG_TAG, "Error: could not get product id");
         }
 
         return productId;
@@ -69,39 +72,6 @@ public class ProductTableDataSource
         String responseString = new Connection().get(GET_PRODUCTS_BY_PRODUCT_OR_BRAND_NAME_PATH, queryParams);
 
         return decodeJSONProductList(responseString);
-    }
-
-    public int getProductId(String productName, String brandName, String sizeDescription, String ouncesOrCount)
-    {
-        List<NameValuePair> queryParams = new ArrayList<>();
-        queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, productName));
-        queryParams.add(new BasicNameValuePair(BRAND_NAME_KEY, brandName));
-        queryParams.add(new BasicNameValuePair(SIZE_DESCRIPTION_KEY, sizeDescription));
-        queryParams.add(new BasicNameValuePair(OUNCES_OR_COUNT_KEY, ouncesOrCount));
-
-        String responseString = new Connection().get(GET_PRODUCT_ID_PATH, queryParams);
-
-        int productId = -1;
-        try
-        {
-            JSONObject resultObject = new JSONObject(responseString);
-            String response = resultObject.getString("Response");
-
-            if (response.charAt(0) == 'K')
-            {
-                productId = resultObject.getInt("Result");
-            }
-            else
-            {
-                Log.e("ProductTableDataSource", "Exception: " + resultObject.getString("Result"));
-            }
-        }
-        catch (JSONException e)
-        {
-            Log.e("ProductTableDataSource", "Exception: " + e.getMessage() + "\n\nStackTrace: " + e.getStackTrace());
-        }
-
-        return productId;
     }
 
 	private JSONArray getResultArray(String json)
@@ -140,7 +110,7 @@ public class ProductTableDataSource
 					String productName = obj.getString("ProductName");
 					String brandName = obj.getString("BrandName");
 					String sizeDescription = obj.getString("SizeDescription");
-					BigDecimal ouncesOrCount = new BigDecimal(obj.getString("OuncesOrCount"));
+					String ouncesOrCount = obj.getString("OuncesOrCount");
 
 					Product product = new Product(productId, productName, brandName, ouncesOrCount, sizeDescription);
 

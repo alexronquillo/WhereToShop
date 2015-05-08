@@ -29,7 +29,9 @@
                 android:value=".controller.ProductSearchActivity"
                 />
         </activity>
-        <activity android:name=".controller.PriceContributorActivity">
+        <activity
+            android:name=".controller.WhereToShopActivity"
+            >
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".controller.ProductSearchActivity"

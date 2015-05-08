@@ -9,14 +9,23 @@ public class Product implements Serializable
 	private String productName;
 	private String brandName;
 	private String sizeDescription; 
-	private BigDecimal ouncesOrCount;
+	private String ouncesOrCount;
 
-	public Product(long productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription)
+    public Product(Product product)
+    {
+        this.productId = product.getProductId();
+        this.productName = product.getProductName();
+        this.brandName = product.getBrandName();
+        this.sizeDescription = product.getSizeDescription();
+        this.ouncesOrCount = product.getOuncesOrCount();
+    }
+
+	public Product(long productId, String productName, String brandName, String ouncesOrCount, String sizeDescription)
     {
 		init(productId, productName, brandName, ouncesOrCount, sizeDescription); 
 	}
 
-	private void init(long productId, String productName, String brandName, BigDecimal ouncesOrCount, String sizeDescription)
+	private void init(long productId, String productName, String brandName, String ouncesOrCount, String sizeDescription)
     {
 		this.productId = productId;
 		this.productName = productName;
@@ -45,7 +54,7 @@ public class Product implements Serializable
         return sizeDescription;
     }
 
-	public BigDecimal getOuncesOrCount()
+	public String getOuncesOrCount()
     {
         return ouncesOrCount;
     }
@@ -65,7 +74,7 @@ public class Product implements Serializable
         this.sizeDescription = sizeDescription;
     }
 
-	public void setOuncesOrCount(BigDecimal ouncesOrCount)
+	public void setOuncesOrCount(String ouncesOrCount)
     {
         this.ouncesOrCount = ouncesOrCount;
     }

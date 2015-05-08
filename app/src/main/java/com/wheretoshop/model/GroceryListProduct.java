@@ -5,6 +5,12 @@ public class GroceryListProduct
 	private Product product;
 	private int quantity;
 
+    public GroceryListProduct(GroceryListProduct groceryListProduct)
+    {
+        this.product = new Product(groceryListProduct.getProduct());
+        this.quantity = groceryListProduct.getQuantity();
+    }
+
 	public GroceryListProduct(Product product, int quantity)
     {
 		this.product = product;

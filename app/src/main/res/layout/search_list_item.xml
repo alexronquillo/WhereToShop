@@ -12,6 +12,7 @@
 		android:orientation="horizontal"
 		android:weightSum="2"
 		>
+
 		<TextView
 			android:id="@+id/brand_name_textview"
 			android:layout_height="wrap_content"

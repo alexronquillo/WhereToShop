@@ -54,16 +54,16 @@ public class HomeActivity extends ActionBarActivity
 		}
 	}
 
-	public void openPriceContributor(View view)
+    public void openWhereToShop(View view)
     {
-		try
+        try
         {
-			Intent intent = new Intent(this, PriceContributorActivity.class);
-			startActivity(intent);
-		}
+            Intent intent = new Intent(this, WhereToShopActivity.class);
+            startActivity(intent);
+        }
         catch (ActivityNotFoundException e)
         {
-			Log.e(HOME_ACTIVITY_LOG_TAG, e.getMessage());
-		}
-	}
+            Log.e(HOME_ACTIVITY_LOG_TAG, e.getMessage());
+        }
+    }
 }
