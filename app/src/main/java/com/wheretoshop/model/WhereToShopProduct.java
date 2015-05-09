@@ -3,13 +3,13 @@ package com.wheretoshop.model;
 /**
  * Created by arr on 5/7/15.
  */
-public class WTSProduct
+public class WhereToShopProduct
 {
     private Product product;
     private String storeName;
     private String generalPrice;
 
-    public WTSProduct(Product product, String storeName, String generalPrice)
+    public WhereToShopProduct(Product product, String storeName, String generalPrice)
     {
         this.product = product;
         this.storeName = storeName;

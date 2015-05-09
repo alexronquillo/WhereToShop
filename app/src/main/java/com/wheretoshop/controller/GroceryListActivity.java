@@ -30,13 +30,9 @@ public class GroceryListActivity extends ActionBarActivity
     {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_activity);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 		grocerylist = GroceryList.getInstance();
 		adapter = new GroceryListAdapter(this, grocerylist.getGroceryList());
-
-		listView = (ListView)findViewById(R.id.list_view);
+		listView = (ListView) findViewById(R.id.list_view);
 		listView.setAdapter(adapter);
 	}
 
@@ -48,11 +44,7 @@ public class GroceryListActivity extends ActionBarActivity
             case R.id.remove:
                 removeCheckedItems();
                 return true;
-            case android.R.id.home:
-                NavUtils.navigateUpTo(this, new Intent(this, HomeActivity.class));
-                return true;
         }
-
         return false;
     }
 
@@ -61,13 +53,11 @@ public class GroceryListActivity extends ActionBarActivity
     {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.grocery_list_menu, menu);
-
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         ComponentName searchableComponentName = new ComponentName(this, ProductSearchActivity.class);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(searchableComponentName));
         searchView.setIconifiedByDefault(false);
-
         return true;
     }
 
@@ -82,10 +72,8 @@ public class GroceryListActivity extends ActionBarActivity
                 grocerylist.remove(i);
             }
         }
-
         adapter.clear();
         adapter.addAll(grocerylist.getGroceryList());
         adapter.notifyDataSetChanged();
-        listView.refreshDrawableState();
     }
 }

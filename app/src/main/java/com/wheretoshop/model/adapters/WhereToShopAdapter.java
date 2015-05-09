@@ -10,14 +10,13 @@ import android.content.Context;
 import java.util.List;
 
 import com.wheretoshop.R;
-import com.wheretoshop.model.Product;
-import com.wheretoshop.model.WTSProduct;
+import com.wheretoshop.model.WhereToShopProduct;
 
 public class WhereToShopAdapter extends ArrayAdapter {
     private static final String LOG_TAG = "WTSAdapter";
     private int layoutResID = R.layout.wts_list_item;
 
-    public WhereToShopAdapter(Context context, List<WTSProduct> objects)
+    public WhereToShopAdapter(Context context, List<WhereToShopProduct> objects)
     {
         super(context, R.layout.wts_list_item, objects);
     }
@@ -31,9 +30,9 @@ public class WhereToShopAdapter extends ArrayAdapter {
             convertView = inflater.inflate(layoutResID, null);
         }
 
-        WTSProduct product = null;
-        if (getItem(position) instanceof WTSProduct)
-            product = (WTSProduct)getItem(position);
+        WhereToShopProduct product = null;
+        if (getItem(position) instanceof WhereToShopProduct)
+            product = (WhereToShopProduct)getItem(position);
         else
             Log.e(LOG_TAG, "Item at position " + position + " is not a WTSProduct");
 
@@ -55,7 +54,7 @@ public class WhereToShopAdapter extends ArrayAdapter {
         return convertView;
     }
 
-    public void replace(List<WTSProduct> products) {
+    public void replace(List<WhereToShopProduct> products) {
         clear();
         addAll(products);
     }

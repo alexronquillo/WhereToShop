@@ -53,7 +53,7 @@ public class ProductTableDataSource
         }
         catch (JSONException e)
         {
-            Log.e("ProductTableDS", "Exception: " + e.getMessage() + "\n\nStackTrace: " + e.getStackTrace());
+            Log.e("ProductTableDS", "Exception: " + e.getMessage());
         }
 
         if (productId == -1)

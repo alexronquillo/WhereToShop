@@ -17,7 +17,7 @@ import com.wheretoshop.R;
 
 public class HomeActivity extends ActionBarActivity
 {
-	private final static String HOME_ACTIVITY_LOG_TAG = "HOME_ACTIVITY_LOG_TAG";
+	private final static String LOG_TAG = "HomeActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,13 +31,11 @@ public class HomeActivity extends ActionBarActivity
     {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_menu, menu);
-
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         ComponentName searchableComponentName = new ComponentName(this, ProductSearchActivity.class);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(searchableComponentName));
         searchView.setIconifiedByDefault(false);
-
         return true;
     }
 
@@ -50,7 +48,7 @@ public class HomeActivity extends ActionBarActivity
 		}
         catch(ActivityNotFoundException e)
         {
-			Log.e(HOME_ACTIVITY_LOG_TAG, e.getMessage());
+			Log.e(LOG_TAG, e.getMessage());
 		}
 	}
 
@@ -63,7 +61,7 @@ public class HomeActivity extends ActionBarActivity
         }
         catch (ActivityNotFoundException e)
         {
-            Log.e(HOME_ACTIVITY_LOG_TAG, e.getMessage());
+            Log.e(LOG_TAG, e.getMessage());
         }
     }
 }

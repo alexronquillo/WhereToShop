@@ -37,7 +37,6 @@ public class ProductSearchActivity extends ActionBarActivity implements ProductS
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity);
-
         productListView = (ListView)findViewById(R.id.list_view);
         productAdapter = new ProductArrayAdapter(this, new ArrayList<Product>());
         productListView.setAdapter(productAdapter);
@@ -57,7 +56,6 @@ public class ProductSearchActivity extends ActionBarActivity implements ProductS
                 }
             }
         });
-
         handleSearchIntent(getIntent());
     }
 
@@ -81,13 +79,11 @@ public class ProductSearchActivity extends ActionBarActivity implements ProductS
     {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_menu, menu);
-
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         MenuItem searchMenuItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) searchMenuItem.getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setIconifiedByDefault(false);
-
         return true;
     }
 
@@ -142,7 +138,6 @@ public class ProductSearchActivity extends ActionBarActivity implements ProductS
                 ProductTableDataSource ds = new ProductTableDataSource();
                 return ds.getProductsByProductOrBrandName(args[0]);
             }
-
             return null;
         }
 
@@ -153,7 +148,6 @@ public class ProductSearchActivity extends ActionBarActivity implements ProductS
             {
                 handler.handleProductSearchResult(products);
             }
-
             progressDialog.dismiss();
         }
     }

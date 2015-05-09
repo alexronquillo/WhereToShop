@@ -7,36 +7,36 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.ListView;
 
 import com.wheretoshop.R;
-import com.wheretoshop.model.WTSHandler;
-import com.wheretoshop.model.WTSProduct;
+import com.wheretoshop.model.WhereToShopProduct;
+import com.wheretoshop.model.WhereToShopResponseHandler;
 import com.wheretoshop.model.adapters.WhereToShopAdapter;
 import com.wheretoshop.model.utilities.PriceTableDataSource;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WhereToShopActivity extends ActionBarActivity implements WTSHandler
+public class WhereToShopActivity extends ActionBarActivity implements WhereToShopResponseHandler
 {
-    private ListView wtsListView;
-    private List<WTSProduct> wtsList;
-    private WhereToShopAdapter adapter;
+    private ListView whereToShopListView;
+    private List<WhereToShopProduct> whereToShopList;
+    private WhereToShopAdapter whereToShopAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity);
-        wtsList = new ArrayList<>();
-        wtsListView = (ListView) findViewById(R.id.list_view);
-        adapter = new WhereToShopAdapter(this, wtsList);
-        wtsListView.setAdapter(adapter);
+        whereToShopList = new ArrayList<>();
+        whereToShopListView = (ListView) findViewById(R.id.list_view);
+        whereToShopAdapter = new WhereToShopAdapter(this, whereToShopList);
+        whereToShopListView.setAdapter(whereToShopAdapter);
         refreshWhereToShopList();
     }
 
     @Override
-    public void handleWTS(List<WTSProduct> wtsList)
+    public void handleWhereToShopResponse(List<WhereToShopProduct> whereToShopList)
     {
-        adapter.replace(wtsList);
+        whereToShopAdapter.replace(whereToShopList);
     }
 
     private void refreshWhereToShopList()
@@ -44,12 +44,12 @@ public class WhereToShopActivity extends ActionBarActivity implements WTSHandler
         new WhereToShopTask(this).execute();
     }
 
-    class WhereToShopTask extends AsyncTask<String, String, List<WTSProduct>>
+    class WhereToShopTask extends AsyncTask<String, String, List<WhereToShopProduct>>
     {
-        private WTSHandler handler;
+        private WhereToShopResponseHandler handler;
         private ProgressDialog progressDialog;
 
-        public WhereToShopTask(WTSHandler handler)
+        public WhereToShopTask(WhereToShopResponseHandler handler)
         {
             this.handler = handler;
         }
@@ -66,17 +66,17 @@ public class WhereToShopActivity extends ActionBarActivity implements WTSHandler
         }
 
         @Override
-        protected List<WTSProduct> doInBackground(String... args)
+        protected List<WhereToShopProduct> doInBackground(String... args)
         {
             PriceTableDataSource ds = new PriceTableDataSource();
             return ds.getBestPrice();
         }
 
         @Override
-        protected void onPostExecute(List<WTSProduct> wtsList)
+        protected void onPostExecute(List<WhereToShopProduct> whereToShopList)
         {
             progressDialog.dismiss();
-            handler.handleWTS(wtsList);
+            handler.handleWhereToShopResponse(whereToShopList);
         }
     }
 }
