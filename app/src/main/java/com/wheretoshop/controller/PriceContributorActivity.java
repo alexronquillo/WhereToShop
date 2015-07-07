@@ -99,19 +99,23 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
         String zipCode = zipCodeEditText.getText().toString();
         String generalPrice = generalPriceEditText.getText().toString();
 
-        if
-        (
-            productNameEditText != null && !productName.equals("") &&
-            brandNameEditText != null && !brandName.equals("") &&
-            sizeDescriptionEditText != null && !sizeDescription.equals("") &&
-            ouncesOrCountEditText != null && !ouncesOrCount.equals("") &&
-            storeNameEditText != null && !storeName.equals("") &&
-            zipCodeEditText != null && !zipCode.equals("") &&
-            generalPriceEditText != null && !generalPrice.equals("")
-        )
+        if (valuesValid(productName, brandName, sizeDescription, ouncesOrCount, storeName, zipCode, generalPrice))
         {
             new PriceContributorTask(this).execute(productName, brandName, sizeDescription, ouncesOrCount, storeName, zipCode, generalPrice);
         }
+    }
+
+    private boolean valuesValid(String... values)
+    {
+        final String EMPTY = "";
+        for (String value : values)
+        {
+            if (value == null || value.equals(EMPTY))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     class PriceContributorTask extends AsyncTask<String, String, Boolean>
