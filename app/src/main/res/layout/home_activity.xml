@@ -23,4 +23,13 @@
     android:onClick="openWhereToShop"
 	/>
 
+<Button
+        android:id="@+id/pc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/contribute_button_text"
+        android:onClick="openPriceContributor"
+        />
+
 </LinearLayout>

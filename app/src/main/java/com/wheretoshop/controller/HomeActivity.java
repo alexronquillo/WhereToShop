@@ -64,4 +64,17 @@ public class HomeActivity extends ActionBarActivity
             Log.e(LOG_TAG, e.getMessage());
         }
     }
+
+    public void openPriceContributor(View view)
+    {
+        try
+        {
+            Intent intent = new Intent(this, PriceContributorActivity.class);
+            startActivity(intent);
+        }
+        catch (ActivityNotFoundException e)
+        {
+            Log.e(LOG_TAG, e.getMessage());
+        }
+    }
 }

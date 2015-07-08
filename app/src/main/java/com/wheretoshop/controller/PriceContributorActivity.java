@@ -22,17 +22,6 @@ import com.wheretoshop.model.PriceContributionHandler;
 import com.wheretoshop.model.Product;
 import com.wheretoshop.model.utilities.PriceTableDataSource;
 
-enum VIEW_ENUM
-{
-    PRODUCT_NAME
-    , BRAND_NAME
-    , SIZE_DESCRIPTION
-    , OUNCES_OR_COUNT
-    , STORE_NAME
-    , ZIP_CODE
-    , GENERAL_PRICE
-}
-
 public class PriceContributorActivity extends ActionBarActivity implements PriceContributionHandler
 {
     private static final String PRODUCT_EXTRA = "PRODUCT_EXTRA";
@@ -44,6 +33,17 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
     private EditText zipCodeEditText;
     private EditText generalPriceEditText;
     private Button submitButton;
+
+    enum VIEW_ENUM
+    {
+        PRODUCT_NAME
+        , BRAND_NAME
+        , SIZE_DESCRIPTION
+        , OUNCES_OR_COUNT
+        , STORE_NAME
+        , ZIP_CODE
+        , GENERAL_PRICE
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
