@@ -14,10 +14,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Map;
+import java.util.HashMap;
+
 import com.wheretoshop.R;
 import com.wheretoshop.model.PriceContributionHandler;
 import com.wheretoshop.model.Product;
 import com.wheretoshop.model.utilities.PriceTableDataSource;
+
+enum VIEW_ENUM
+{
+    PRODUCT_NAME
+    , BRAND_NAME
+    , SIZE_DESCRIPTION
+    , OUNCES_OR_COUNT
+    , STORE_NAME
+    , ZIP_CODE
+    , GENERAL_PRICE
+}
 
 public class PriceContributorActivity extends ActionBarActivity implements PriceContributionHandler
 {
@@ -91,24 +105,26 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
 
     private void insertPrice()
     {
-        String productName = productNameEditText.getText().toString();
-        String brandName = brandNameEditText.getText().toString();
-        String sizeDescription = sizeDescriptionEditText.getText().toString();
-        String ouncesOrCount = ouncesOrCountEditText.getText().toString();
-        String storeName = storeNameEditText.getText().toString();
-        String zipCode = zipCodeEditText.getText().toString();
-        String generalPrice = generalPriceEditText.getText().toString();
+        // Todo: Put these into a map and pass the map
+        Map<VIEW_ENUM, String> params = new HashMap<VIEW_ENUM, String>();
+        params.put(VIEW_ENUM.PRODUCT_NAME, productNameEditText.getText().toString());
+        params.put(VIEW_ENUM.BRAND_NAME, brandNameEditText.getText().toString());
+        params.put(VIEW_ENUM.OUNCES_OR_COUNT, ouncesOrCountEditText.getText().toString());
+        params.put(VIEW_ENUM.SIZE_DESCRIPTION, sizeDescriptionEditText.getText().toString());
+        params.put(VIEW_ENUM.STORE_NAME, storeNameEditText.getText().toString());
+        params.put(VIEW_ENUM.ZIP_CODE, zipCodeEditText.getText().toString());
+        params.put(VIEW_ENUM.GENERAL_PRICE, generalPriceEditText.getText().toString());
 
-        if (valuesValid(productName, brandName, sizeDescription, ouncesOrCount, storeName, zipCode, generalPrice))
+        if (valuesValid(params))
         {
-            new PriceContributorTask(this).execute(productName, brandName, sizeDescription, ouncesOrCount, storeName, zipCode, generalPrice);
+            new PriceContributorTask(this).execute(params);
         }
     }
 
-    private boolean valuesValid(String... values)
+    private boolean valuesValid(Map<VIEW_ENUM, String> params)
     {
         final String EMPTY = "";
-        for (String value : values)
+        for (String value : params.values())
         {
             if (value == null || value.equals(EMPTY))
             {
@@ -118,7 +134,7 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
         return true;
     }
 
-    class PriceContributorTask extends AsyncTask<String, String, Boolean>
+    class PriceContributorTask extends AsyncTask<Map<VIEW_ENUM, String>, String, Boolean>
     {
         PriceContributionHandler handler;
         private ProgressDialog progressDialog;
@@ -140,18 +156,17 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
         }
 
         @Override
-        protected Boolean doInBackground(String... args)
+        protected Boolean doInBackground(Map<VIEW_ENUM, String>... args)
         {
-            if (args.length == 7)
+            if (args.length == 1)
             {
-                // Todo: make sure these match up
-                String productName = args[0];
-                String brandName = args[1];
-                String sizeDescription = args[2];
-                String ouncesOrCount = args[3];
-                String storeName = args[4];
-                String zipCode = args[5];
-                String generalPrice = args[6];
+                String productName = args[0].get(VIEW_ENUM.PRODUCT_NAME);
+                String brandName = args[0].get(VIEW_ENUM.BRAND_NAME);
+                String sizeDescription = args[0].get(VIEW_ENUM.SIZE_DESCRIPTION);
+                String ouncesOrCount = args[0].get(VIEW_ENUM.OUNCES_OR_COUNT);
+                String storeName = args[0].get(VIEW_ENUM.STORE_NAME);
+                String zipCode = args[0].get(VIEW_ENUM.ZIP_CODE);
+                String generalPrice = args[0].get(VIEW_ENUM.GENERAL_PRICE);
 
                 PriceTableDataSource ds = new PriceTableDataSource();
                 return ds.insertPrice(productName, brandName, sizeDescription, ouncesOrCount, storeName, zipCode, generalPrice);
