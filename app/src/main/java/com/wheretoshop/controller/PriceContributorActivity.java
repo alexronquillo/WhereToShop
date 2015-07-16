@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -97,15 +98,16 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
         // ToDo: handle price contribution
         if (success)
         {
+            // ToDo: prompt to contribute another
         }
         else
         {
+            Toast.makeText(this, "Price contribution was unsuccessful.", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void insertPrice()
     {
-        // Todo: Put these into a map and pass the map
         Map<VIEW_ENUM, String> params = new HashMap<VIEW_ENUM, String>();
         params.put(VIEW_ENUM.PRODUCT_NAME, productNameEditText.getText().toString());
         params.put(VIEW_ENUM.BRAND_NAME, brandNameEditText.getText().toString());
@@ -171,8 +173,7 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
                 PriceTableDataSource ds = new PriceTableDataSource();
                 return ds.insertPrice(productName, brandName, sizeDescription, ouncesOrCount, storeName, zipCode, generalPrice);
             }
-
-            return null;
+            return false;
         }
 
         @Override
