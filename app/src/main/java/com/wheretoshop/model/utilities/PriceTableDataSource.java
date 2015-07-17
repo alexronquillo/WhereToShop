@@ -13,38 +13,35 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PriceTableDataSource 
 {
     private static final String LOG_TAG = "PriceTableDS";
     private static final String WTS_BASE_PATH = "/cgi-bin/wts_base.py";
-
-    // Todo: modify endpoint:
-    private static final String INSERT_PRICE_PATH = "/cgi-bin/insert_price.py";
+    private static final String INSERT_PRICE_PATH = "/cgi-bin/do_all_inserts.py";
 
     private static final String PRODUCT_ID_KEY = "product_id";
     private static final String ZIPCODE_KEY = "zipcode";
 
-    // Todo: modify key constants to the params from the server script:
-    private static final String PRODUCT_NAME_KEY = "product_name";
-    private static final String BRAND_NAME_KEY = "brand_name";
-    private static final String SIZE_DESCRIPTION_KEY = "size_description";
-    private static final String OUNCES_OR_COUNT_KEY = "ounces_or_count";
-    private static final String STORE_NAME_KEY = "store_name";
-    private static final String ZIP_CODE_KEY = "zip_code";
-    private static final String GENERAL_PRICE_KEY = "general_price";
+    public static final String PRODUCT_NAME_KEY = "product_name";
+    public static final String BRAND_NAME_KEY = "brand_name";
+    public static final String SIZE_DESCRIPTION_KEY = "size_description";
+    public static final String OUNCES_OR_COUNT_KEY = "ounces_or_count";
+    public static final String STORE_NAME_KEY = "store_name";
+    public static final String ZIP_CODE_KEY = "zip_code";
+    public static final String GENERAL_PRICE_KEY = "general_price";
 
-    public boolean insertPrice(String productName, String brandName, String sizeDescription,
-                              String ouncesOrCount, String storeName, String zipCode, String generalPrice)
+    public boolean insertPrice(Map<String, String> productMap)
     {
         List<NameValuePair> queryParams = new ArrayList<>();
-        queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, productName));
-        queryParams.add(new BasicNameValuePair(BRAND_NAME_KEY, brandName));
-        queryParams.add(new BasicNameValuePair(SIZE_DESCRIPTION_KEY, sizeDescription));
-        queryParams.add(new BasicNameValuePair(OUNCES_OR_COUNT_KEY, ouncesOrCount));
-        queryParams.add(new BasicNameValuePair(STORE_NAME_KEY, storeName));
-        queryParams.add(new BasicNameValuePair(ZIP_CODE_KEY, zipCode));
-        queryParams.add(new BasicNameValuePair(GENERAL_PRICE_KEY, generalPrice));
+        queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, productMap.get(PRODUCT_NAME_KEY)));
+        queryParams.add(new BasicNameValuePair(BRAND_NAME_KEY, productMap.get(BRAND_NAME_KEY)));
+        queryParams.add(new BasicNameValuePair(SIZE_DESCRIPTION_KEY, productMap.get(SIZE_DESCRIPTION_KEY)));
+        queryParams.add(new BasicNameValuePair(OUNCES_OR_COUNT_KEY, productMap.get(OUNCES_OR_COUNT_KEY)));
+        queryParams.add(new BasicNameValuePair(STORE_NAME_KEY, productMap.get(STORE_NAME_KEY)));
+        queryParams.add(new BasicNameValuePair(ZIP_CODE_KEY, productMap.get(ZIPCODE_KEY)));
+        queryParams.add(new BasicNameValuePair(GENERAL_PRICE_KEY, productMap.get(GENERAL_PRICE_KEY)));
 
         String responseString = new Connection().post(INSERT_PRICE_PATH, queryParams);
 

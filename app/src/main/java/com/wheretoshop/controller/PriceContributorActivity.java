@@ -35,17 +35,6 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
     private EditText generalPriceEditText;
     private Button submitButton;
 
-    enum VIEW_ENUM
-    {
-        PRODUCT_NAME
-        , BRAND_NAME
-        , SIZE_DESCRIPTION
-        , OUNCES_OR_COUNT
-        , STORE_NAME
-        , ZIP_CODE
-        , GENERAL_PRICE
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -108,14 +97,14 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
 
     private void insertPrice()
     {
-        Map<VIEW_ENUM, String> params = new HashMap<VIEW_ENUM, String>();
-        params.put(VIEW_ENUM.PRODUCT_NAME, productNameEditText.getText().toString());
-        params.put(VIEW_ENUM.BRAND_NAME, brandNameEditText.getText().toString());
-        params.put(VIEW_ENUM.OUNCES_OR_COUNT, ouncesOrCountEditText.getText().toString());
-        params.put(VIEW_ENUM.SIZE_DESCRIPTION, sizeDescriptionEditText.getText().toString());
-        params.put(VIEW_ENUM.STORE_NAME, storeNameEditText.getText().toString());
-        params.put(VIEW_ENUM.ZIP_CODE, zipCodeEditText.getText().toString());
-        params.put(VIEW_ENUM.GENERAL_PRICE, generalPriceEditText.getText().toString());
+        Map<String, String> params = new HashMap<String, String>();
+        params.put(PriceTableDataSource.PRODUCT_NAME_KEY, productNameEditText.getText().toString());
+        params.put(PriceTableDataSource.BRAND_NAME_KEY, brandNameEditText.getText().toString());
+        params.put(PriceTableDataSource.OUNCES_OR_COUNT_KEY, ouncesOrCountEditText.getText().toString());
+        params.put(PriceTableDataSource.SIZE_DESCRIPTION_KEY, sizeDescriptionEditText.getText().toString());
+        params.put(PriceTableDataSource.STORE_NAME_KEY, storeNameEditText.getText().toString());
+        params.put(PriceTableDataSource.ZIP_CODE_KEY, zipCodeEditText.getText().toString());
+        params.put(PriceTableDataSource.GENERAL_PRICE_KEY, generalPriceEditText.getText().toString());
 
         if (valuesValid(params))
         {
@@ -123,7 +112,7 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
         }
     }
 
-    private boolean valuesValid(Map<VIEW_ENUM, String> params)
+    private boolean valuesValid(Map<String, String> params)
     {
         final String EMPTY = "";
         for (String value : params.values())
@@ -136,7 +125,7 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
         return true;
     }
 
-    class PriceContributorTask extends AsyncTask<Map<VIEW_ENUM, String>, String, Boolean>
+    class PriceContributorTask extends AsyncTask<Map<String, String>, String, Boolean>
     {
         PriceContributionHandler handler;
         private ProgressDialog progressDialog;
@@ -158,20 +147,12 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
         }
 
         @Override
-        protected Boolean doInBackground(Map<VIEW_ENUM, String>... args)
+        protected Boolean doInBackground(Map<String, String>... args)
         {
             if (args.length == 1)
             {
-                String productName = args[0].get(VIEW_ENUM.PRODUCT_NAME);
-                String brandName = args[0].get(VIEW_ENUM.BRAND_NAME);
-                String sizeDescription = args[0].get(VIEW_ENUM.SIZE_DESCRIPTION);
-                String ouncesOrCount = args[0].get(VIEW_ENUM.OUNCES_OR_COUNT);
-                String storeName = args[0].get(VIEW_ENUM.STORE_NAME);
-                String zipCode = args[0].get(VIEW_ENUM.ZIP_CODE);
-                String generalPrice = args[0].get(VIEW_ENUM.GENERAL_PRICE);
-
                 PriceTableDataSource ds = new PriceTableDataSource();
-                return ds.insertPrice(productName, brandName, sizeDescription, ouncesOrCount, storeName, zipCode, generalPrice);
+                return ds.insertPrice(args[0]);
             }
             return false;
         }
