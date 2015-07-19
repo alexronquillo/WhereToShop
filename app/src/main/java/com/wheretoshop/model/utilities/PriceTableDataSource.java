@@ -22,8 +22,6 @@ public class PriceTableDataSource
     private static final String INSERT_PRICE_PATH = "/cgi-bin/do_all_inserts.py";
 
     private static final String PRODUCT_ID_KEY = "product_id";
-    private static final String ZIPCODE_KEY = "zipcode";
-
     public static final String PRODUCT_NAME_KEY = "product_name";
     public static final String BRAND_NAME_KEY = "brand_name";
     public static final String SIZE_DESCRIPTION_KEY = "size_description";
@@ -40,7 +38,7 @@ public class PriceTableDataSource
         queryParams.add(new BasicNameValuePair(SIZE_DESCRIPTION_KEY, productMap.get(SIZE_DESCRIPTION_KEY)));
         queryParams.add(new BasicNameValuePair(OUNCES_OR_COUNT_KEY, productMap.get(OUNCES_OR_COUNT_KEY)));
         queryParams.add(new BasicNameValuePair(STORE_NAME_KEY, productMap.get(STORE_NAME_KEY)));
-        queryParams.add(new BasicNameValuePair(ZIP_CODE_KEY, productMap.get(ZIPCODE_KEY)));
+        queryParams.add(new BasicNameValuePair(ZIP_CODE_KEY, productMap.get(ZIP_CODE_KEY)));
         queryParams.add(new BasicNameValuePair(GENERAL_PRICE_KEY, productMap.get(GENERAL_PRICE_KEY)));
 
         String responseString = new Connection().post(INSERT_PRICE_PATH, queryParams);
@@ -50,7 +48,7 @@ public class PriceTableDataSource
             JSONObject resultObject = new JSONObject(responseString);
             String response = resultObject.getString("Response");
 
-            if (response.charAt(0) == 'K')
+            if (response.charAt(0) == 'K' && resultObject.getBoolean("Result"))
             {
                 return true;
             }
@@ -78,7 +76,7 @@ public class PriceTableDataSource
         {
             queryParams.clear();
             queryParams.add(new BasicNameValuePair(PRODUCT_ID_KEY, "" + groceryListProduct.getProduct().getProductId()));
-            queryParams.add(new BasicNameValuePair(ZIPCODE_KEY, testZipCode));
+            queryParams.add(new BasicNameValuePair(ZIP_CODE_KEY, testZipCode));
             String responseString = new Connection().get(WTS_BASE_PATH, queryParams);
             try
             {

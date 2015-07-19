@@ -21,6 +21,7 @@ public class ViewProductActivity extends Activity
     private TextView sizeDescriptionTextView;
     private TextView ouncesOrCountTextView;
     private Button addButton;
+    private Button contributeButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -54,6 +55,23 @@ public class ViewProductActivity extends Activity
                 }
             }
         });
+
+        contributeButton = (Button) findViewById(R.id.contribute_button);
+        contributeButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startPriceContributor();
+            }
+        });
+    }
+
+    private void startPriceContributor()
+    {
+        Intent intent = new Intent(this, PriceContributorActivity.class);
+        intent.putExtra(PriceContributorActivity.PRODUCT_EXTRA, product);
+        startActivity(intent);
     }
 
     private void startGroceryListActivity()

@@ -25,7 +25,7 @@ import com.wheretoshop.model.utilities.PriceTableDataSource;
 
 public class PriceContributorActivity extends ActionBarActivity implements PriceContributionHandler
 {
-    private static final String PRODUCT_EXTRA = "PRODUCT_EXTRA";
+    public static final String PRODUCT_EXTRA = "PRODUCT_EXTRA";
     private EditText productNameEditText;
     private EditText brandNameEditText;
     private EditText sizeDescriptionEditText;
@@ -84,10 +84,13 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
     @Override
     public void handlePriceContribution(Boolean success)
     {
-        // ToDo: handle price contribution
         if (success)
         {
-            // ToDo: prompt to contribute another
+            productNameEditText.setText("");
+            brandNameEditText.setText("");
+            sizeDescriptionEditText.setText("");
+            ouncesOrCountEditText.setText("");
+            Toast.makeText(this, "Price contribution was successful.", Toast.LENGTH_SHORT).show();
         }
         else
         {
