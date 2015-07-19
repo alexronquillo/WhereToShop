@@ -11,8 +11,11 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import java.util.Map;
@@ -30,7 +33,7 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
     private EditText brandNameEditText;
     private EditText sizeDescriptionEditText;
     private EditText ouncesOrCountEditText;
-    private EditText storeNameEditText;
+    private AutoCompleteTextView storeNameAutoCompleteTextView;
     private EditText zipCodeEditText;
     private EditText generalPriceEditText;
     private Button submitButton;
@@ -45,7 +48,7 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
         brandNameEditText = (EditText) findViewById(R.id.pc_brand_name_edit_text);
         sizeDescriptionEditText = (EditText) findViewById(R.id.pc_size_description_edit_text);
         ouncesOrCountEditText = (EditText) findViewById(R.id.pc_ounces_or_count_edit_text);
-        storeNameEditText = (EditText) findViewById(R.id.pc_store_name_edit_text);
+        storeNameAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.pc_store_name_edit_text);
         zipCodeEditText = (EditText) findViewById(R.id.pc_zip_code_edit_text);
         generalPriceEditText = (EditText) findViewById(R.id.pc_general_price_edit_text);
         submitButton = (Button) findViewById(R.id.pc_submit_button);
@@ -105,7 +108,7 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
         params.put(PriceTableDataSource.BRAND_NAME_KEY, brandNameEditText.getText().toString());
         params.put(PriceTableDataSource.OUNCES_OR_COUNT_KEY, ouncesOrCountEditText.getText().toString());
         params.put(PriceTableDataSource.SIZE_DESCRIPTION_KEY, sizeDescriptionEditText.getText().toString());
-        params.put(PriceTableDataSource.STORE_NAME_KEY, storeNameEditText.getText().toString());
+        params.put(PriceTableDataSource.STORE_NAME_KEY, storeNameAutoCompleteTextView.getText().toString());
         params.put(PriceTableDataSource.ZIP_CODE_KEY, zipCodeEditText.getText().toString());
         params.put(PriceTableDataSource.GENERAL_PRICE_KEY, generalPriceEditText.getText().toString());
 
