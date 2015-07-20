@@ -93,6 +93,7 @@ public class PriceContributorActivity extends ActionBarActivity implements Price
             brandNameEditText.setText("");
             sizeDescriptionEditText.setText("");
             ouncesOrCountEditText.setText("");
+            generalPriceEditText.setText("");
             Toast.makeText(this, "Price contribution was successful.", Toast.LENGTH_SHORT).show();
         }
         else

@@ -71,13 +71,14 @@ public class ViewProductActivity extends Activity
     {
         Intent intent = new Intent(this, PriceContributorActivity.class);
         intent.putExtra(PriceContributorActivity.PRODUCT_EXTRA, product);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
     private void startGroceryListActivity()
     {
         Intent intent = new Intent(this, GroceryListActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 }
