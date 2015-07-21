@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.wheretoshop.R;
 import com.wheretoshop.model.GroceryList;
@@ -34,6 +35,7 @@ public class GroceryListActivity extends ActionBarActivity
 		adapter = new GroceryListAdapter(this, grocerylist.getGroceryList());
 		listView = (ListView) findViewById(R.id.list_view);
 		listView.setAdapter(adapter);
+        listView.setEmptyView((TextView)findViewById(R.id.empty_textview));
 	}
 
     @Override

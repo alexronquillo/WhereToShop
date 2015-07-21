@@ -20,4 +20,5 @@
     <string name="contribute_button_text">Contribute Price</string>
     <string name="product_brand_search_hint">Product Name/Brand Name</string>
     <string name="grocery_list_submit_toast">A product has been added to your grocery list.</string>
+    <string name="empty_list_text">"Your list is empty. Tap the search icon in the action bar to search for products."</string>
 </resources>
