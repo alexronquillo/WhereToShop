@@ -1,28 +1,47 @@
 package com.wheretoshop.model;
 
 import android.content.Context;
+import android.view.ContextMenu;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 
 public class GroceryList
 {
+    private static final String FILE_NAME = "grocery_list.data";
 	private static GroceryList instance;
+    private Context context;
 	private List<GroceryListProduct> groceryList;
+    private GroceryListJSONSerializer serializer;
 
-	private GroceryList()
+	private GroceryList(Context context)
     {
-		this.groceryList = new ArrayList<>();
+        this.context = context;
+        serializer = new GroceryListJSONSerializer(context, FILE_NAME);
+        groceryList = new ArrayList<>();
+        try
+        {
+            groceryList = serializer.loadGroceryList();
+        }
+        catch (JSONException e)
+        {
+            // Do nothing...
+        }
+        catch (IOException e)
+        {
+            // Do nothing...
+        }
 	}
 
-	public static GroceryList getInstance()
+	public static GroceryList getInstance(Context context)
     {
-		if (instance != null)
+		if (instance == null)
         {
-            return instance;
+            instance = new GroceryList(context);
         }
-
-		instance = new GroceryList();
 		return instance;
 	}
 
@@ -40,20 +59,34 @@ public class GroceryList
 	public void add(GroceryListProduct product)
     {
 		groceryList.add(product);
+        try
+        {
+            serializer.saveGroceryList(groceryList);
+        }
+        catch (JSONException e)
+        {
+            // Do nothing...
+        }
+        catch (IOException e)
+        {
+            // Do nothing...
+        }
 	}
 
     public void remove(int position)
     {
         groceryList.remove(position);
-    }
-
-	private void backupList()
-    {
-        /* Todo */
-    }
-
-	private void reloadList()
-    {
-        /* Todo */
+        try
+        {
+            serializer.saveGroceryList(groceryList);
+        }
+        catch (JSONException e)
+        {
+            // Do nothing...
+        }
+        catch (IOException e)
+        {
+            // Do nothing...
+        }
     }
 }

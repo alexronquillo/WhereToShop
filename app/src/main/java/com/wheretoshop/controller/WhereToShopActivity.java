@@ -69,7 +69,7 @@ public class WhereToShopActivity extends ActionBarActivity implements WhereToSho
         protected List<WhereToShopProduct> doInBackground(String... args)
         {
             PriceTableDataSource ds = new PriceTableDataSource();
-            return ds.getBestPrice();
+            return ds.getBestPrice(getParent().getApplicationContext());
         }
 
         @Override

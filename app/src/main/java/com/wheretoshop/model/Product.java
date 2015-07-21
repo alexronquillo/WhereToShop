@@ -1,7 +1,11 @@
 package com.wheretoshop.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.math.BigDecimal;
 import java.io.Serializable;
+import java.util.Map;
 
 public class Product implements Serializable
 {
@@ -77,5 +81,16 @@ public class Product implements Serializable
 	public void setOuncesOrCount(String ouncesOrCount)
     {
         this.ouncesOrCount = ouncesOrCount;
+    }
+
+    public JSONObject toJson() throws JSONException
+    {
+        JSONObject jsonProduct = new JSONObject();
+        jsonProduct.put("productId", productId);
+        jsonProduct.put("productName", productName);
+        jsonProduct.put("brandName", brandName);
+        jsonProduct.put("sizeDescription", sizeDescription);
+        jsonProduct.put("ouncesOrCount", ouncesOrCount);
+        return jsonProduct;
     }
 }

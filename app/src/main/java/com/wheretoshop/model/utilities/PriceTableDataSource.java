@@ -1,5 +1,6 @@
 package com.wheretoshop.model.utilities;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.wheretoshop.model.GroceryList;
@@ -64,9 +65,9 @@ public class PriceTableDataSource
         return false;
     }
 
-    public List<WhereToShopProduct> getBestPrice()
+    public List<WhereToShopProduct> getBestPrice(Context context)
     {
-        GroceryList groceryList = GroceryList.getInstance();
+        GroceryList groceryList = GroceryList.getInstance(context);
         List<GroceryListProduct> list = groceryList.getGroceryList();
         String testZipCode = "30144"; // For testing purposes, always use the local zip code
         List<NameValuePair> queryParams = new ArrayList<>();

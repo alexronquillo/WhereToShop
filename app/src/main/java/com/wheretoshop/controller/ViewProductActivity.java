@@ -49,7 +49,7 @@ public class ViewProductActivity extends Activity
             public void onClick(View v) {
                 if (product != null)
                 {
-                    GroceryList groceryList = GroceryList.getInstance();
+                    GroceryList groceryList = GroceryList.getInstance(getApplicationContext());
                     groceryList.add(new GroceryListProduct(product, DEFAULT_QUANTITY));
                     startGroceryListActivity();
                 }
