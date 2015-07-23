@@ -91,7 +91,8 @@ public class PriceTableDataSource
                     String storeName = resultObject.getString("store_name");
                     WhereToShopProduct product = new WhereToShopProduct(groceryListProduct.getProduct(), storeName, price);
                     whereToShopProductList.add(product);
-                } else
+                }
+                else
                 {
                     Log.e(LOG_TAG, "Exception: " + responseObject.getString("Result"));
                 }
