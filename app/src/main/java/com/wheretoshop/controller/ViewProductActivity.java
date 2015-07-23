@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.wheretoshop.R;
@@ -20,6 +21,7 @@ public class ViewProductActivity extends Activity
     private TextView brandNameTextView;
     private TextView sizeDescriptionTextView;
     private TextView ouncesOrCountTextView;
+    private CheckBox anyBrandCheckbox;
     private Button addButton;
     private Button contributeButton;
 
@@ -33,6 +35,7 @@ public class ViewProductActivity extends Activity
         brandNameTextView = (TextView) findViewById(R.id.brand_name_textview);
         sizeDescriptionTextView = (TextView) findViewById(R.id.size_description_textview);
         ouncesOrCountTextView = (TextView) findViewById(R.id.ounces_count_textview);
+        anyBrandCheckbox = (CheckBox) findViewById(R.id.any_brand_check_box);
 
         if (getIntent().hasExtra(ProductSearchActivity.PRODUCT_EXTRA))
         {
@@ -50,7 +53,13 @@ public class ViewProductActivity extends Activity
                 if (product != null)
                 {
                     GroceryList groceryList = GroceryList.getInstance(getApplicationContext());
-                    groceryList.add(new GroceryListProduct(product, DEFAULT_QUANTITY));
+                    boolean anyBrand = false;
+                    if (anyBrandCheckbox.isChecked())
+                    {
+                        product.setBrandName("Any Brand");
+                        anyBrand = true;
+                    }
+                    groceryList.add(new GroceryListProduct(product, DEFAULT_QUANTITY, anyBrand));
                     startGroceryListActivity();
                 }
             }

@@ -20,6 +20,7 @@ public class PriceTableDataSource
 {
     private static final String LOG_TAG = "PriceTableDS";
     private static final String WTS_BASE_PATH = "/cgi-bin/wts_base.py";
+    private static final String WTS_BRANDLESS_PATH = "/cgi-bin/wts_brandless.py";
     private static final String INSERT_PRICE_PATH = "/cgi-bin/do_all_inserts.py";
 
     private static final String PRODUCT_ID_KEY = "product_id";
@@ -76,9 +77,21 @@ public class PriceTableDataSource
         for (GroceryListProduct groceryListProduct : list)
         {
             queryParams.clear();
-            queryParams.add(new BasicNameValuePair(PRODUCT_ID_KEY, "" + groceryListProduct.getProduct().getProductId()));
-            queryParams.add(new BasicNameValuePair(ZIP_CODE_KEY, testZipCode));
-            String responseString = new Connection().get(WTS_BASE_PATH, queryParams);
+            String responseString = "";
+            if (groceryListProduct.isAnyBrand())
+            {
+                queryParams.add(new BasicNameValuePair(PRODUCT_NAME_KEY, "" + groceryListProduct.getProduct().getProductName()));
+                queryParams.add(new BasicNameValuePair(SIZE_DESCRIPTION_KEY, "" + groceryListProduct.getProduct().getSizeDescription()));
+                queryParams.add(new BasicNameValuePair(OUNCES_OR_COUNT_KEY, "" + groceryListProduct.getProduct().getOuncesOrCount()));
+                queryParams.add(new BasicNameValuePair(ZIP_CODE_KEY, testZipCode));
+                responseString = new Connection().get(WTS_BRANDLESS_PATH, queryParams);
+            }
+            else
+            {
+                queryParams.add(new BasicNameValuePair(PRODUCT_ID_KEY, "" + groceryListProduct.getProduct().getProductId()));
+                queryParams.add(new BasicNameValuePair(ZIP_CODE_KEY, testZipCode));
+                responseString = new Connection().get(WTS_BASE_PATH, queryParams);
+            }
             try
             {
                 JSONObject responseObject = new JSONObject(responseString);

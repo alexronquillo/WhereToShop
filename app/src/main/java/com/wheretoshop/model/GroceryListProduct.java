@@ -9,11 +9,13 @@ public class GroceryListProduct
     private static final String JSON_QUANTITY = "json_quantity";
 	private Product product;
 	private int quantity;
+    private boolean anyBrand;
 
     public GroceryListProduct(GroceryListProduct groceryListProduct)
     {
         this.product = new Product(groceryListProduct.getProduct());
         this.quantity = groceryListProduct.getQuantity();
+        this.anyBrand = groceryListProduct.isAnyBrand();
     }
 
     public GroceryListProduct(JSONObject serializedGroceryListProduct) throws JSONException
@@ -28,10 +30,11 @@ public class GroceryListProduct
         this.quantity = (int)serializedGroceryListProduct.get(JSON_QUANTITY);
     }
 
-	public GroceryListProduct(Product product, int quantity)
+	public GroceryListProduct(Product product, int quantity, boolean anyBrand)
     {
 		this.product = product;
 		this.quantity = quantity;
+        this.anyBrand = anyBrand;
 	}
 
     public JSONObject toJSON() throws JSONException
@@ -47,6 +50,11 @@ public class GroceryListProduct
         this.quantity = quantity;
     }
 
+    public void setAnyBrand(boolean anyBrand)
+    {
+        this.anyBrand = anyBrand;
+    }
+
 	public Product getProduct()
     {
         return product;
@@ -55,5 +63,10 @@ public class GroceryListProduct
 	public int getQuantity()
     {
         return quantity;
+    }
+
+    public boolean isAnyBrand()
+    {
+        return anyBrand;
     }
 }
