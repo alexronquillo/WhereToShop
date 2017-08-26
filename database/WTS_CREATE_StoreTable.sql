@@ -1,0 +1,10 @@
+USE WTS;
+
+CREATE TABLE WTS_StoreTable
+(
+	StoreID INT AUTO_INCREMENT NOT NULL
+	, StoreName VARCHAR(25) NOT NULL
+	, StoreZipCode INT NOT NULL
+	, PRIMARY KEY (StoreID)
+	, CONSTRAINT unique_store UNIQUE (StoreName, StoreZipCode)
+) ENGINE=INNODB;

@@ -1,0 +1,16 @@
+USE WTS;
+
+CREATE TABLE WTS_GroceryListBackupTable
+(
+	GroceryListBackupItemID INT AUTO_INCREMENT NOT NULL
+	, UserID INT NOT NULL
+	, ProductName VARCHAR(25) NOT NULL
+	, BrandName VARCHAR(25) NOT NULL
+	, Quantity DECIMAL NOT NULL
+	, Units VARCHAR(10) NOT NULL
+	, PRIMARY KEY (GroceryListBackupItemID)
+	, INDEX user_id_index (UserID)
+	, FOREIGN KEY (UserID)
+		REFERENCES WTS_UserTable (UserID)
+		ON DELETE CASCADE
+) ENGINE=INNODB;
