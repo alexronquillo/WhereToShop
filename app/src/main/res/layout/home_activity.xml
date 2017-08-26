@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_vertical"
+    >
+
+<Button
+	android:id="@+id/grocery_list_button"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_gravity="center"
+	android:text="@string/grocery_list_button_text"
+	android:onClick="openGroceryList"
+	/>
+
+<Button
+	android:id="@+id/wts_button"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_gravity="center"
+	android:text="@string/wts_button_text"
+    android:onClick="openWhereToShop"
+	/>
+
+<Button
+        android:id="@+id/pc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/contribute_button_text"
+        android:onClick="openPriceContributor"
+        />
+
+</LinearLayout>
